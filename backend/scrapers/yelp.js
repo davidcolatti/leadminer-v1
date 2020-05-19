@@ -2,17 +2,6 @@ const yelp = require('yelp-fusion');
 const keys = require('../config/keys');
 const Lead = require('../models/Lead');
 
-// not sure if I need this mongoose set up
-const mongoose = require('mongoose');
-
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/leadminer';
-console.log('Connecting DB to ', MONGODB_URI);
-
-mongoose
-	.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-	.then((x) => console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`))
-	.catch((err) => console.error('Error connecting to mongo', err));
-
 const apiKey = keys.apiKey;
 
 function searchYelp(term, location) {
@@ -29,23 +18,27 @@ function searchYelp(term, location) {
 	client
 		.search(searchRequest)
 		.then((res) => {
-			businessList = res.jsonBody.businesses.map((each) => {
+			businessList = res.jsonBody.businesses.forEach((each) => {
 				let data = {
 					businessName: each.name,
 					phoneNumber: each.display_phone,
 					city: each.location.city,
 					state: each.location.state
 				};
-				return data;
+
+				Lead.findOne({ phoneNumber: data.phoneNumber }).then((res) => {
+					if (res) {
+						console.log(`this lead exists and it's called ${data.businessName}`);
+					} else {
+						Lead.create(data);
+						console.log(`it doesnt exist and I inserted ${data.businessName}`);
+					}
+				});
 			});
-		})
-		.then(() => {
-			console.log(businessList);
-			Lead.insertMany(businessList);
 		})
 		.catch((e) => {
 			console.log(e);
 		});
 }
 
-searchYelp('construction', 'miami');
+module.exports = searchYelp;

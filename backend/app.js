@@ -10,6 +10,7 @@ const cors = require('cors');
 const session = require('express-session');
 const passport = require('./config/passport');
 const main = require('./scrapers/angies');
+const searchYelp = require('./scrapers/yelp');
 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/leadminer';
 console.log('Connecting DB to ', MONGODB_URI);
@@ -19,13 +20,18 @@ mongoose
 	.then((x) => console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`))
 	.catch((err) => console.error('Error connecting to mongo', err));
 
-// interval for scrapers
-let angiesId = 25082450;
+// interval for scrapers every 12 hours
+let angiesId = 25082550;
 setInterval(function() {
-	main(angiesId, 10);
-	angiesId += 10;
 	console.log(angiesId);
-}, 10000);
+	main(angiesId, 9);
+	angiesId += 10;
+}, 12 * 60 * 1000);
+
+// yelp will take a searched input of category and location
+// searchYelp('landscaping', 'boca raton');
+
+///////////////
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);

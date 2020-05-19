@@ -66,5 +66,5 @@ async function main(id, count) {
 
 	const pagesScraped = await scrapePages(pages);
 }
-// 25082310, 10
+
 module.exports = main;

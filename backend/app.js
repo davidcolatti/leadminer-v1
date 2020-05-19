@@ -9,6 +9,7 @@ const path = require('path');
 const cors = require('cors');
 const session = require('express-session');
 const passport = require('./config/passport');
+const main = require('./scrapers/angies');
 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/leadminer';
 console.log('Connecting DB to ', MONGODB_URI);
@@ -17,6 +18,8 @@ mongoose
 	.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then((x) => console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`))
 	.catch((err) => console.error('Error connecting to mongo', err));
+
+main(25082300, 10);
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);

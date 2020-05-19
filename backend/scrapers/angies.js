@@ -1,17 +1,6 @@
 const axios = require('axios');
 const Lead = require('../models/Lead');
 
-// not sure if I need this mongoose set up
-const mongoose = require('mongoose');
-
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/leadminer';
-console.log('Connecting DB to ', MONGODB_URI);
-
-mongoose
-	.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-	.then((x) => console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`))
-	.catch((err) => console.error('Error connecting to mongo', err));
-
 async function makePages(id, count) {
 	let pages = [];
 	let pageId = id;
@@ -62,17 +51,20 @@ async function scrapePages(pages) {
 			city: res.data.primaryAddress.city.name,
 			state: res.data.primaryAddress.region.abbreviation
 		};
+		// console.log(data);
+		// results.push(data);
 
-		results.push(data);
+		Lead.findOne({ phoneNumber: data.phoneNumber }).then((res) => console.log(res));
 	}
-	return results;
+	// return results;
 }
 
 async function main(id, count) {
 	const pages = await makePages(id, count);
 
 	const pagesScraped = await scrapePages(pages);
-	Lead.insertMany(pagesScraped);
+	// console.log(pagesScraped);
+	// Lead.insertMany(pagesScraped);
 }
-
-main(25082300, 10);
+// 25082310, 10
+module.exports = main;

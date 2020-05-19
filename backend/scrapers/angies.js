@@ -15,8 +15,6 @@ async function makePages(id, count) {
 }
 
 async function scrapePages(pages) {
-	let results = [];
-
 	for (let i = 0; i < pages.length; i++) {
 		let res = await axios.get(pages[i], {
 			headers: {
@@ -51,20 +49,22 @@ async function scrapePages(pages) {
 			city: res.data.primaryAddress.city.name,
 			state: res.data.primaryAddress.region.abbreviation
 		};
-		// console.log(data);
-		// results.push(data);
 
-		Lead.findOne({ phoneNumber: data.phoneNumber }).then((res) => console.log(res));
+		Lead.findOne({ phoneNumber: data.phoneNumber }).then((res) => {
+			if (res) {
+				console.log(`this lead exists and it's called ${data.businessName}`);
+			} else {
+				Lead.create(data);
+				console.log(`it doesnt exist and I inserted ${data.businessName}`);
+			}
+		});
 	}
-	// return results;
 }
 
 async function main(id, count) {
 	const pages = await makePages(id, count);
 
 	const pagesScraped = await scrapePages(pages);
-	// console.log(pagesScraped);
-	// Lead.insertMany(pagesScraped);
 }
 // 25082310, 10
 module.exports = main;

@@ -19,7 +19,13 @@ mongoose
 	.then((x) => console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`))
 	.catch((err) => console.error('Error connecting to mongo', err));
 
-main(25082300, 10);
+// interval for scrapers
+let angiesId = 25082450;
+setInterval(function() {
+	main(angiesId, 10);
+	angiesId += 10;
+	console.log(angiesId);
+}, 10000);
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
@@ -64,8 +70,10 @@ app.use(logger('dev'));
 
 const index = require('./routes/index');
 const auth = require('./routes/auth');
+const leads = require('./routes/leads');
 app.use('/', index);
 app.use('/', auth);
+app.use('/', leads);
 
 // Uncomment this line for production
 let client = path.join(__dirname + '../public/index.html');

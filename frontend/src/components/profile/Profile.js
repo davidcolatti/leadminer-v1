@@ -1,15 +1,28 @@
 import React, { Component } from 'react';
 
-const Profile = (props) => {
-    if(!props.user.email){ 
-        props.history.push('/log-in') 
-    }   
-    return (
-        <div>
-            Profile
-            Welcome {props.user.email} !!! 
-        </div>
-    );
+class Profile extends Component {
+	displayLeads = () => {
+		let list = this.props.user.masterLeads.slice(0, 10);
+
+		return list.map((each) => {
+			return <li>{each.businessName}</li>;
+		});
+
+		this.setState({});
+	};
+
+	render() {
+		if (!this.props.user.email) {
+			this.props.history.push('/log-in');
+		}
+
+		return (
+			<div>
+				<div>Profile Welcome {this.props.user.email} !!!</div>
+				<ul>{this.displayLeads()}</ul>
+			</div>
+		);
+	}
 }
 
 export default Profile;

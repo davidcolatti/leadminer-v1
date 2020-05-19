@@ -12,6 +12,7 @@ const passport = require('./config/passport');
 const main = require('./scrapers/angies');
 const searchYelp = require('./scrapers/yelp');
 
+// MongoDB connection to atlas or compass
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/leadminer';
 console.log('Connecting DB to ', MONGODB_URI);
 

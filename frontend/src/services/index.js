@@ -21,8 +21,8 @@ const actions = {
 	logOut: async () => {
 		return await service.get('/logout');
 	},
-	importLeads: async () => {
-		return await service.get('/import-leads');
+	getLeadsFromMaster: async () => {
+		return await service.get('/master-leads');
 	}
 };
 

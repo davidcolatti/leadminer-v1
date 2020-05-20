@@ -2,19 +2,36 @@ import React, { Component } from 'react';
 import actions from '../../services';
 
 class Dashboard extends Component {
-	addFreshLeads = () => {
-		let freshLeads = this.props.user.freshLeads;
-
-		freshLeads.push(this.props.user.masterLeads[0]);
-		console.log(freshLeads);
+	state = {
+		masterLeads: this.props.user.masterLeads,
+		index: 0
 	};
 
-	displayFreshLeads = () => {
-		let freshLeads = this.props.user.freshLeads;
-
-		return freshLeads.map((each) => {
-			return <li>{each.businessName}</li>;
+	componentDidMount() {
+		this.setState({
+			masterLeads: this.props.user.masterLeads
 		});
+	}
+
+	nextLead = () => {
+		this.setState({
+			index: this.state.index + 1
+		});
+	};
+
+	displayLead = () => {
+		return (
+			<li>
+				<div>
+					<h3>{this.state.masterLeads[this.state.index].businessName}</h3>
+					<a href={`tel:${this.state.masterLeads[this.state.index].phoneNumber}`}>
+						{this.state.masterLeads[this.state.index].phoneNumber}
+					</a>
+					<h4>{`${this.state.masterLeads[this.state.index].city}, ${this.state.masterLeads[this.state.index]
+						.state}`}</h4>
+				</div>
+			</li>
+		);
 	};
 
 	render() {
@@ -22,8 +39,8 @@ class Dashboard extends Component {
 			<div>
 				{this.props.user.email ? (
 					<div className="Dashboard">
-						<button onClick={this.addFreshLeads}>Add Fresh Leads</button>
-						<ul>{this.displayFreshLeads}</ul>
+						<button onClick={this.nextLead}>Next Lead</button>
+						<ul>{this.displayLead()}</ul>
 					</div>
 				) : (
 					this.props.history.push('/')

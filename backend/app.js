@@ -27,7 +27,7 @@ setInterval(function() {
 	console.log(angiesId);
 	main(angiesId, 9);
 	angiesId += 10;
-}, 12 * 60 * 1000);
+}, 12 * 60 * 60 * 1000);
 
 // yelp will take a searched input of category and location
 // searchYelp('landscaping', 'boca raton');

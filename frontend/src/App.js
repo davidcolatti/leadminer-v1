@@ -12,15 +12,20 @@ class App extends Component {
 	async componentDidMount() {
 		let user = await actions.isLoggedIn();
 
-		let masterLeads = await actions.getLeadsFromMaster();
-		masterLeads = masterLeads.data;
-		this.setState({ ...user.data, masterLeads });
+		this.setState({ ...user.data });
 	}
+
+	setUser = (user) => {
+		console.log(user);
+		this.setState({
+			...user.data
+		});
+	};
 
 	render() {
 		return (
 			<BrowserRouter>
-				<NavBar />
+				<NavBar setUser={this.setUser} email={this.state.email} />
 				<Switch>
 					<Route exact path="/" render={(props) => <LandingPage {...props} />} />
 					<Route component={NotFound} />

@@ -16,18 +16,29 @@ class NavBar extends Component {
 	handleLoginSubmit = (e) => {
 		e.preventDefault();
 
+		let data = {
+			email: this.state.email,
+			password: this.state.password
+		};
+
 		actions
-			.logIn(this.state)
-			.then((user) => {
-				this.props.setUser({ ...user.data });
+			.logIn(data)
+			.then(async (user) => {
+				let masterLeads = await actions.getLeadsFromMaster();
+				masterLeads = masterLeads.data;
+
+				this.props.setUser({ ...user.data, masterLeads });
+				this.setState({
+					loginToggle: !this.state.loginToggle
+				});
 			})
-			.catch(({ response }) => console.error(response.data));
+			.catch(({ response }) => console.error(response));
 	};
 
 	displayLoginForm = () => {
 		return (
 			<Fragment>
-				<form onSubmit={this.handleLoginSubmit}>
+				<form action="/dashboard" onSubmit={this.handleLoginSubmit}>
 					<input name="email" type="email" onChange={this.handleChange} />
 					<input name="password" type="password" onChange={this.handleChange} />
 					<input type="submit" value="Log In" />
@@ -43,6 +54,9 @@ class NavBar extends Component {
 			.signUp(this.state)
 			.then((user) => {
 				this.props.setUser({ ...user.data });
+				this.setState({
+					signUpToggle: !this.state.signUpToggle
+				});
 			})
 			.catch(({ response }) => console.error(response.data));
 	};
@@ -59,29 +73,47 @@ class NavBar extends Component {
 		);
 	};
 
+	logOut = async () => {
+		let res = await actions.logOut();
+		this.props.setUser({ email: null, createdAt: null, updatedAt: null, _id: null }); //FIX
+	};
+
 	render() {
 		return (
-			<nav className="NavBar">
-				<span>
-					<img src="" alt="emblem" />
-				</span>
+			<div>
+				{this.props.email ? (
+					<nav className="NavBar">
+						<span>
+							<img src="" alt="emblem" />
+						</span>
 
-				{this.state.loginToggle ? (
-					<Link onClick={() => this.setState({ loginToggle: !this.state.loginToggle })} to="/">
-						Login
-					</Link>
+						<Link to="/">Dashboard</Link>
+						<Link onClick={this.logOut}>Sign Out</Link>
+					</nav>
 				) : (
-					this.displayLoginForm()
-				)}
+					<nav className="NavBar">
+						<span>
+							<img src="" alt="emblem" />
+						</span>
 
-				{this.state.signUpToggle ? (
-					<Link onClick={() => this.setState({ signUpToggle: !this.state.signUpToggle })} to="/">
-						Sign Up
-					</Link>
-				) : (
-					this.displaySignUpForm()
+						{this.state.loginToggle ? (
+							<Link onClick={() => this.setState({ loginToggle: !this.state.loginToggle })} to="/">
+								Login
+							</Link>
+						) : (
+							this.displayLoginForm()
+						)}
+
+						{this.state.signUpToggle ? (
+							<Link onClick={() => this.setState({ signUpToggle: !this.state.signUpToggle })} to="/">
+								Sign Up
+							</Link>
+						) : (
+							this.displaySignUpForm()
+						)}
+					</nav>
 				)}
-			</nav>
+			</div>
 		);
 	}
 }

@@ -40,7 +40,7 @@ class Dashboard extends Component {
 				{this.props.user.email ? (
 					<div className="Dashboard">
 						<button onClick={this.nextLead}>Next Lead</button>
-						<ul>{this.displayLead()}</ul>
+						{/* <ul>{this.displayLead()}</ul> */}
 					</div>
 				) : (
 					this.props.history.push('/')

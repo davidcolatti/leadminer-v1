@@ -2,3 +2,44 @@ body {
 	margin: 0;
 	padding: 0;
 }
+
+/* NAV BAR */
+
+.NavBar {
+	border: 1px solid red;
+	padding: 0 0 0 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.nav-links {
+	right: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.nav-links a {
+	font-size: 18px;
+	margin-right: 1rem;
+	text-decoration: none;
+}
+
+.emblem-img {
+	border: 3px solid rgb(0, 0, 0);
+	width: 60px;
+	border-radius: 50%;
+}
+
+.nav-form {
+	margin-right: 1rem;
+}
+
+.nav-form input {
+	margin-right: .5rem;
+}
+
+.nav-form input[type=submit] {
+	width: 4rem;
+	font-size: 25px;
+}

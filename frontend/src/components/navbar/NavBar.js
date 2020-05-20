@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-
 import actions from '../../services/index';
 
 class NavBar extends Component {
@@ -39,9 +38,9 @@ class NavBar extends Component {
 	displayLoginForm = () => {
 		return (
 			<Fragment>
-				<form action="/dashboard" onSubmit={this.handleLoginSubmit}>
-					<input name="email" type="email" onChange={this.handleChange} />
-					<input name="password" type="password" onChange={this.handleChange} />
+				<form className="nav-form" action="/dashboard" onSubmit={this.handleLoginSubmit}>
+					<input name="email" placeholder="email" type="email" onChange={this.handleChange} />
+					<input name="password" placeholder="password" type="password" onChange={this.handleChange} />
 					<input type="submit" value="Log In" />
 				</form>
 			</Fragment>
@@ -65,9 +64,9 @@ class NavBar extends Component {
 	displaySignUpForm = () => {
 		return (
 			<Fragment>
-				<form onSubmit={this.handleSignUpSubmit}>
-					<input name="email" type="email" onChange={this.handleChange} />
-					<input name="password" type="password" onChange={this.handleChange} />
+				<form className="nav-form" onSubmit={this.handleSignUpSubmit}>
+					<input name="email" type="email" placeholder="email" onChange={this.handleChange} />
+					<input name="password" placeholder="password" type="password" onChange={this.handleChange} />
 					<input type="submit" value="Sign Up" />
 				</form>
 			</Fragment>
@@ -84,36 +83,47 @@ class NavBar extends Component {
 			<div>
 				{this.props.email ? (
 					<nav className="NavBar">
-						<span>
-							<img src="" alt="emblem" />
+						<span className="nav-emblem">
+							<img
+								className="emblem-img"
+								src="https://cdn0.iconfinder.com/data/icons/mining-glyph/100/mining-29-512.png"
+								alt="emblem"
+							/>
 						</span>
-
-						<Link to="/dashboard">Dashboard</Link>
-						<Link to="/" onClick={this.logOut}>
-							Sign Out
-						</Link>
+						<span className="nav-links">
+							<Link to="/dashboard">Dashboard</Link>
+							<Link to="/" onClick={this.logOut}>
+								Sign Out
+							</Link>
+						</span>
 					</nav>
 				) : (
 					<nav className="NavBar">
-						<span>
-							<img src="" alt="emblem" />
+						<span className="nav-emblem">
+							<img
+								className="emblem-img"
+								src="https://cdn0.iconfinder.com/data/icons/mining-glyph/100/mining-29-512.png"
+								alt="emblem"
+							/>
 						</span>
 
-						{this.state.loginToggle ? (
-							<Link onClick={() => this.setState({ loginToggle: !this.state.loginToggle })} to="/">
-								Login
-							</Link>
-						) : (
-							this.displayLoginForm()
-						)}
+						<span className="nav-links">
+							{this.state.loginToggle ? (
+								<Link onClick={() => this.setState({ loginToggle: !this.state.loginToggle })} to="/">
+									Login
+								</Link>
+							) : (
+								this.displayLoginForm()
+							)}
 
-						{this.state.signUpToggle ? (
-							<Link onClick={() => this.setState({ signUpToggle: !this.state.signUpToggle })} to="/">
-								Sign Up
-							</Link>
-						) : (
-							this.displaySignUpForm()
-						)}
+							{this.state.signUpToggle ? (
+								<Link onClick={() => this.setState({ signUpToggle: !this.state.signUpToggle })} to="/">
+									Sign Up
+								</Link>
+							) : (
+								this.displaySignUpForm()
+							)}
+						</span>
 					</nav>
 				)}
 			</div>

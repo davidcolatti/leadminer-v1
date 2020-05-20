@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const passport = require('../config/passport');
+const Lead = require('../models/Lead');
 
 router.post('/signup', (req, res, next) => {
 	User.register(req.body, req.body.password)
@@ -18,12 +19,23 @@ router.post('/signup', (req, res, next) => {
 
 //return await service.get('/is-logged-in');
 router.get('/is-logged-in', (req, res, next) => {
-	res.json(req.user);
+	const { user } = req;
+	console.log(req.user);
+	// res.json(req.user);
+	req.user
+		? Lead.find().then((masterLeads) => {
+				res.status(200).json({ user, masterLeads });
+			})
+		: res.status(304).json({ message: 'please log in' });
 });
 
 router.post('/login', passport.authenticate('local'), (req, res, next) => {
 	const { user } = req;
-	res.status(200).json(user);
+	// res.status(200).json(user);
+	console.log(user);
+	Lead.find().then((masterLeads) => {
+		res.status(200).json({ user, masterLeads });
+	});
 });
 
 router.get('/logout', (req, res, next) => {

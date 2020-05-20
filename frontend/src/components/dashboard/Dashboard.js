@@ -34,16 +34,11 @@ class Dashboard extends Component {
 	};
 
 	render() {
+		console.log(this);
 		return (
-			<div>
-				{this.props.user.email ? (
-					<div className="Dashboard">
-						<button onClick={this.nextLead}>Next Lead</button>
-						{this.props.user.masterLeads ? this.displayLead() : ''}
-					</div>
-				) : (
-					this.props.history.push('/')
-				)}
+			<div className="Dashboard">
+				<button onClick={this.nextLead}>Next Lead</button>
+				{this.props.user.masterLeads ? this.displayLead() : ''}
 			</div>
 		);
 	}

@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
+
+import history from '../history/History';
 import actions from '../../services/index';
 
 class NavBar extends Component {
@@ -22,15 +24,18 @@ class NavBar extends Component {
 
 		actions
 			.logIn(data)
-			.then(async (user) => {
-				let masterLeads = await actions.getLeadsFromMaster();
-				masterLeads = masterLeads.data;
+			.then((user) => {
+				console.log(user);
 
-				this.props.setUser({ ...user.data, masterLeads });
+				this.props.setUser({ ...user.data.user, masterLeads: user.data.masterLeads });
+
 				console.log('got the master leads');
 				this.setState({
 					loginToggle: !this.state.loginToggle
 				});
+				console.log(this);
+
+				history.push('/dashboard');
 			})
 			.catch(({ response }) => console.error(response));
 	};
@@ -53,7 +58,7 @@ class NavBar extends Component {
 		actions
 			.signUp(this.state)
 			.then((user) => {
-				this.props.setUser({ ...user.data });
+				this.props.setUser({ ...user.data.user });
 				this.setState({
 					signUpToggle: !this.state.signUpToggle
 				});
@@ -75,12 +80,16 @@ class NavBar extends Component {
 
 	logOut = async () => {
 		let res = await actions.logOut();
-		this.props.setUser({ email: null, createdAt: null, updatedAt: null, _id: null }); //FIX
+		console.log('logout was called', res);
+
+		this.props.setUser({ email: null, createdAt: null, updatedAt: null, _id: null, masterLeads: null }); //FIX
 	};
 
 	render() {
 		return (
 			<div>
+				<span style={{ color: 'red' }}>temporary: {(this.props.email, JSON.stringify(this.props))}</span>
+
 				{this.props.email ? (
 					<nav className="NavBar">
 						<span className="nav-emblem">

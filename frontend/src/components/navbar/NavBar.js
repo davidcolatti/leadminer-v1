@@ -28,6 +28,7 @@ class NavBar extends Component {
 				masterLeads = masterLeads.data;
 
 				this.props.setUser({ ...user.data, masterLeads });
+				console.log('got the master leads');
 				this.setState({
 					loginToggle: !this.state.loginToggle
 				});
@@ -87,8 +88,10 @@ class NavBar extends Component {
 							<img src="" alt="emblem" />
 						</span>
 
-						<Link to="/">Dashboard</Link>
-						<Link onClick={this.logOut}>Sign Out</Link>
+						<Link to="/dashboard">Dashboard</Link>
+						<Link to="/" onClick={this.logOut}>
+							Sign Out
+						</Link>
 					</nav>
 				) : (
 					<nav className="NavBar">

@@ -23,7 +23,7 @@ class Dashboard extends Component {
 		let masterLeads = this.props.user.masterLeads;
 
 		return (
-			<div>
+			<div className="lead-segment">
 				<h3>{masterLeads[this.state.index].businessName}</h3>
 				<a href={`tel:${masterLeads[this.state.index].phoneNumber}`}>
 					{masterLeads[this.state.index].phoneNumber}

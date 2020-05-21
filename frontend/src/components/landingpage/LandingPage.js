@@ -19,15 +19,15 @@ class LandingPage extends Component {
 						<div className="landing-feature">
 							<h2>Close Deals</h2>
 							<p>
-								Our software is created to mine small business information that is brand new, with
-								little to no web-presence.
+								With having a consistent pipeline of new leads coming in, you'll find yourself
+								generating more revenue and closing more deals!
 							</p>
 						</div>
 						<div className="landing-feature">
 							<h2>Retain Clients</h2>
 							<p>
-								Our software is created to mine small business information that is brand new, with
-								little to no web-presence.
+								LeadMiner will let you become more organized with your workload and let you increase
+								client retention by keeping notes and following up to client requests.
 							</p>
 						</div>
 					</div>

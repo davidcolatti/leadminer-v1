@@ -6,7 +6,7 @@ body {
 /* NAV BAR */
 
 .NavBar {
-	border: 1px solid red;
+	border-bottom: .5px solid rgb(255, 255, 255);
 	padding: 0 0 0 1rem;
 	display: flex;
 	justify-content: space-between;
@@ -46,8 +46,8 @@ body {
 }
 
 .emblem-img {
-	background-color: #dc2e23;
-	border: 3px solid rgb(255, 255, 255);
+	background-color: white;
+	border: 2px solid rgb(255, 255, 255);
 	width: 60px;
 	border-radius: 50%;
 }
@@ -55,24 +55,36 @@ body {
 /* Landing Page */
 
 .LandingPage {
-	border: 1px solid red;
+	/* border: 1px solid red; */
 	width: 100vw;
 	height: 100vh;
 }
 
 .landing-photo {
-	background-color: yellow;
+	display: flex;
+	background-image: url('https://miro.medium.com/max/3002/1*dP81IJq-tGFxy1rIK3RYsg.png');
+	background-size: cover;
+	background-repeat: no-repeat;
 	height: 70%;
+	align-items: center;
+	justify-content: center;
 }
 
 .features {
-	border: 1px solid red;
+	border: 0.5px solid rgb(255, 255, 255);
 	height: 30%;
 	display: flex;
 	flex-direction: row;
+	background-color: #12032d;
+	font-size: 18px;
+	color: white;
+	text-shadow: 1px 1px #dc2f2370;
+	padding: 1rem;
 }
 
 .landing-feature {
 	width: 100%;
-	border: 1px solid red;
+	border-left: 0.5px solid rgb(255, 255, 255);
+	padding-left: 1rem;
+	margin-right: 50px;
 }

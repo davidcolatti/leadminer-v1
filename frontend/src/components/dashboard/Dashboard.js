@@ -47,10 +47,7 @@ class Dashboard extends Component {
 						/>
 					</div>
 				</div>
-				<div className="dashboard-notes">
-					<CompanyDetails selectedLead={this.state.selectedLead} user={this.props.user} />
-					<img src="https://lh3.googleusercontent.com/proxy/NUpptkz5KvUER7y8nMLkAdJDcO3UlDUbk4oUm0KqV0x-XbwSvPKggmExkQGE7UcudzYMWeEJ85dPztTNkMjhsJKFi2ZxNjStdaSXhq4ioyjLCemTlHuxysC2A6vk" />
-				</div>
+				<CompanyDetails selectedLead={this.state.selectedLead} user={this.props.user} />
 			</div>
 		);
 	}

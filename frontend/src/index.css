@@ -57,7 +57,7 @@ body {
 .LandingPage {
 	/* border: 1px solid red; */
 	width: 100vw;
-	height: 90vh;
+	height: 100vh;
 }
 
 .landing-photo {
@@ -79,11 +79,12 @@ body {
 }
 
 .features {
-	border: 0.5px solid rgb(255, 255, 255);
+	border-top: 0.5px solid rgb(255, 255, 255);
 	height: 30%;
 	display: flex;
 	flex-direction: row;
-	font-size: 18px;
+	font-size: 15px;
+	line-height: 1.5;
 	color: white;
 	text-shadow: 1px 1px black;
 	padding: 1rem;
@@ -94,4 +95,81 @@ body {
 	border-left: 0.5px solid rgb(255, 255, 255);
 	padding-left: 1rem;
 	margin-right: 50px;
+}
+
+@media only screen and (max-width: 700px) {
+	.landing-logo {
+		height: 50%;
+		font-size: 50px;
+		color: white;
+		text-shadow: 1px 1px black;
+	}
+
+	.features {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		font-size: 15px;
+		line-height: 1.5;
+		color: white;
+		text-shadow: 1px 1px black;
+		padding: 1rem;
+	}
+
+	.landing-feature {
+		width: 100%;
+		padding-left: 1rem;
+		padding-right: 1rem;
+		margin-right: 50px;
+	}
+}
+
+/* DASHBOARD */
+
+.Dashboard {
+	width: 100vw;
+	height: 100vh;
+	background-image: url('https://i.stack.imgur.com/28iBm.png');
+	color: white;
+	text-shadow: 1px 1px black;
+}
+
+.dashboard-content {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.dashboard-content img {
+	align-self: center;
+	margin: 0 1rem;
+	height: 50px;
+	width: 50px;
+	border-radius: 90%;
+}
+
+.dashboard-content img:hover {
+	height: 52px;
+	width: 52px;
+	cursor: pointer;
+}
+
+.dashboard-notes {
+	display: flex;
+	flex-direction: row;
+}
+
+.lead-segment {
+	margin: 2rem;
+	border-bottom: 1px solid white;
+	width: 40%;
+	text-align: center;
+}
+
+.lead-segment a {
+	color: white;
+	text-shadow: 1px 1px black;
+}
+
+.lead-segment a:hover {
+	color: rgb(207, 205, 205);
 }

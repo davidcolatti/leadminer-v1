@@ -37,8 +37,21 @@ class Dashboard extends Component {
 		console.log(this);
 		return (
 			<div className="Dashboard">
-				<button onClick={this.nextLead}>Next Lead</button>
-				{this.props.user.masterLeads ? this.displayLead() : ''}
+				<div className="dashboard-content">
+					{this.props.user.masterLeads ? this.displayLead() : ''}
+					<img
+						onClick={this.nextLead}
+						alt="right button"
+						src="https://i.ya-webdesign.com/images/white-arrow-transparent-png-1.png"
+					/>
+				</div>
+				<div className="dashboard-notes">
+					<textarea id="w3mission" rows="10" cols="60">
+						At w3schools.com you will learn how to make a website. We offer free tutorials in all web
+						development technologies.
+					</textarea>
+					<div className="dashboard-fields">ADD A FORM</div>
+				</div>
 			</div>
 		);
 	}

@@ -20,13 +20,16 @@ router.post('/signup', (req, res, next) => {
 //return await service.get('/is-logged-in');
 router.get('/is-logged-in', (req, res, next) => {
 	const { user } = req;
-	console.log(req.user);
+	console.log('from the /logged in router', user);
 	// res.json(req.user);
-	req.user
-		? Lead.find().then((masterLeads) => {
-				res.status(200).json({ user, masterLeads });
-			})
-		: res.status(304).json({ message: 'please log in' });
+	if (user)
+		Lead.find().then((masterLeads) => {
+			res.status(200).json({ user, masterLeads });
+		});
+	else {
+		console.log('test 304');
+		res.status(401).json({ message: 'please log in' });
+	}
 });
 
 router.post('/login', passport.authenticate('local'), (req, res, next) => {
@@ -38,8 +41,10 @@ router.post('/login', passport.authenticate('local'), (req, res, next) => {
 	});
 });
 
-router.get('/logout', (req, res, next) => {
-	req.logout();
+router.get('/logout', async (req, res, next) => {
+	await req.logout();
+
+	console.log(req.user, 'from the logged out router');
 	res.status(200).json({ msg: 'Logged out' });
 });
 

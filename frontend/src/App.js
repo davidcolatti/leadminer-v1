@@ -15,7 +15,7 @@ class App extends Component {
 		actions
 			.isLoggedIn()
 			.then((user) => {
-				console.log(user);
+				console.log(user.data);
 
 				this.setUser({ ...user.data.user, masterLeads: user.data.masterLeads });
 
@@ -29,10 +29,11 @@ class App extends Component {
 
 	setUser = (user) => {
 		console.log('set user called', user);
-
-		this.setState({
-			...user
-		});
+		if (user._id)
+			this.setState({
+				...user
+			});
+		else history.push('/');
 	};
 
 	render() {

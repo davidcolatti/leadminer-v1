@@ -11,7 +11,7 @@ body {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: #12032d;
+	background-color: #000000;
 }
 
 .nav-links {
@@ -25,11 +25,11 @@ body {
 	margin-right: 1rem;
 	text-decoration: none;
 	color: white;
-	text-shadow: 1px 1px #dc2f2370;
+	text-shadow: 1px 1px black;
 }
 
 .nav-links a:hover {
-	color: rgb(165, 164, 164);
+	color: rgb(207, 205, 205);
 }
 
 .nav-form {
@@ -57,17 +57,25 @@ body {
 .LandingPage {
 	/* border: 1px solid red; */
 	width: 100vw;
-	height: 100vh;
+	height: 90vh;
 }
 
 .landing-photo {
 	display: flex;
-	background-image: url('https://miro.medium.com/max/3002/1*dP81IJq-tGFxy1rIK3RYsg.png');
+	flex-direction: column;
+	background-image: url('https://i.stack.imgur.com/28iBm.png');
 	background-size: cover;
 	background-repeat: no-repeat;
-	height: 70%;
+	height: 100%;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-end;
+}
+
+.landing-logo {
+	height: 40%;
+	font-size: 50px;
+	color: white;
+	text-shadow: 1px 1px black;
 }
 
 .features {
@@ -75,10 +83,9 @@ body {
 	height: 30%;
 	display: flex;
 	flex-direction: row;
-	background-color: #12032d;
 	font-size: 18px;
 	color: white;
-	text-shadow: 1px 1px #dc2f2370;
+	text-shadow: 1px 1px black;
 	padding: 1rem;
 }
 

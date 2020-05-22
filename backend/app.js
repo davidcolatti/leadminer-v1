@@ -42,7 +42,11 @@ const app = express();
 app.use(
 	cors({
 		credentials: true,
-		origin: [ 'http://localhost:3000', 'https://distracted-noyce-fee0e2.netlify.com' ] //Swap this with the client url
+		origin: [
+			'http://localhost:3000',
+			'https://distracted-noyce-fee0e2.netlify.com',
+			'https://leadminerapp.herokuapp.com'
+		] //Swap this with the client url
 	})
 );
 

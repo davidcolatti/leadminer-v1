@@ -43,11 +43,15 @@ async function scrapePages(pages) {
 			credentials: 'include'
 		});
 
+		let category = res.data.categories.map((each) => each.name);
+
 		let data = {
 			businessName: res.data.name,
 			phoneNumber: res.data.primaryContactInfo.primaryPhoneNumber.original,
 			city: res.data.primaryAddress.city.name,
-			state: res.data.primaryAddress.region.abbreviation
+			state: res.data.primaryAddress.region.abbreviation,
+			email: res.data.primaryContactInfo.email,
+			category: category
 		};
 
 		Lead.findOne({ phoneNumber: data.phoneNumber }).then((res) => {

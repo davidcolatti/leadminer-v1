@@ -21,16 +21,18 @@ mongoose
 	.then((x) => console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`))
 	.catch((err) => console.error('Error connecting to mongo', err));
 
-// interval for scrapers every 12 hours
+// scrapers
 let angiesId = 25082850;
 setInterval(function() {
 	console.log(angiesId);
 	main(angiesId, 9);
 	angiesId += 10;
 }, 1000000);
+
 // 12 * 60 * 60 * 1000
+
 // yelp will take a searched input of category and location
-// searchYelp('construction', 'miami');
+// searchYelp('lawyer', 'miami');
 
 ///////////////
 

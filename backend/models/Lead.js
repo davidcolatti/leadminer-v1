@@ -6,10 +6,13 @@ const leadSchema = new Schema({
 	phoneNumber: String,
 	city: String,
 	state: String,
-	contactName: String,
+	firstName: String,
+	lastName: String,
 	streetAddress: String,
 	secondPhoneNumber: String,
-	notes: Array
+	notes: Array,
+	category: Array,
+	email: String
 });
 
 const Lead = mongoose.model('Lead', leadSchema);

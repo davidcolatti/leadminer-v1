@@ -23,9 +23,10 @@ function searchYelp(term, location) {
 					businessName: each.name,
 					phoneNumber: each.display_phone,
 					city: each.location.city,
-					state: each.location.state
+					state: each.location.state,
+					category: each.categories.map((res) => res.title)
 				};
-
+				console.log(data);
 				Lead.findOne({ phoneNumber: data.phoneNumber }).then((res) => {
 					if (res) {
 						console.log(`this lead exists and it's called ${data.businessName}`);

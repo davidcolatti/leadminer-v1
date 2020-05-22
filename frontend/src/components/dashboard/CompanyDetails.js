@@ -26,9 +26,9 @@ class CompanyDetails extends Component {
 							<h4>{`${this.props.selectedLead.city}, ${this.props.selectedLead.state}`}</h4>
 						</div>
 
-						<div className="selected-button" onClick={this.addLeadToContactedArray}>
-							<img src="https://lh3.googleusercontent.com/proxy/NUpptkz5KvUER7y8nMLkAdJDcO3UlDUbk4oUm0KqV0x-XbwSvPKggmExkQGE7UcudzYMWeEJ85dPztTNkMjhsJKFi2ZxNjStdaSXhq4ioyjLCemTlHuxysC2A6vk" />
-						</div>
+						<button className="selected-button" onClick={this.addLeadToContactedArray}>
+							+
+						</button>
 					</div>
 				) : (
 					'NO LEAD SELECTED'

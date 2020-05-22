@@ -232,6 +232,17 @@ body {
 	text-shadow: 1px 1px black;
 }
 
+.pipeline-prospects {
+	display: flex;
+	justify-content: flex-start;
+	text-align: center;
+}
+
+.pipeline-list {
+	list-style-type: none;
+}
+
 .pipeline-title {
-	margin: 0;
+	margin-left: 2rem;
+	text-decoration: underline;
 }

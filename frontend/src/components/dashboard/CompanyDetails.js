@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import actions from '../../services/index';
 
 class CompanyDetails extends Component {
-	addLeadToContactedArray = () => {
+	addLeadToContactedArray = async () => {
 		let contactedLead = this.props.user.contactedLeads;
 
 		if (contactedLead.includes(this.props.selectedLead)) {
 			console.log('this lead exists');
 		} else {
 			contactedLead.push(this.props.selectedLead);
+
+			actions.addLeadToContactedArray(contactedLead).then((res) => console.log(res));
 
 			console.log(`i added ${this.props.selectedLead.businessName} to my contacted leads array`);
 		}
@@ -25,7 +28,6 @@ class CompanyDetails extends Component {
 							</a>
 							<h4>{`${this.props.selectedLead.city}, ${this.props.selectedLead.state}`}</h4>
 						</div>
-
 						<button className="selected-button" onClick={this.addLeadToContactedArray}>
 							+
 						</button>

@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { Router, Switch, Route, Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Router, Switch, Route } from 'react-router-dom';
 import NotFound from './components/404/NotFound.js';
 import NavBar from './components/navbar/NavBar';
 import LandingPage from './components/landingpage/LandingPage.js';
@@ -16,11 +16,8 @@ class App extends Component {
 		actions
 			.isLoggedIn()
 			.then((user) => {
-				console.log(user.data);
-
 				this.setUser({ ...user.data.user, masterLeads: user.data.masterLeads });
 
-				console.log('got the master leads');
 				this.setState({
 					loginToggle: !this.state.loginToggle
 				});
@@ -29,7 +26,6 @@ class App extends Component {
 	}
 
 	setUser = (user) => {
-		console.log('set user called', user);
 		if (user._id)
 			this.setState({
 				...user

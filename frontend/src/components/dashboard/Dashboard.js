@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import CompanyDetails from './CompanyDetails';
-import actions from '../../services';
+// import actions from '../../services';
 
 class Dashboard extends Component {
 	state = {

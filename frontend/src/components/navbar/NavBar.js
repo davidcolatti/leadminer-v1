@@ -25,15 +25,12 @@ class NavBar extends Component {
 		actions
 			.logIn(data)
 			.then((user) => {
-				console.log(user);
-
 				this.props.setUser({ ...user.data.user, masterLeads: user.data.masterLeads });
 
 				console.log('got the master leads');
 				this.setState({
 					loginToggle: !this.state.loginToggle
 				});
-				console.log(this);
 
 				history.push('/dashboard');
 			})

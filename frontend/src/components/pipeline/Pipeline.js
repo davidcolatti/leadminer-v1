@@ -6,7 +6,7 @@ class Pipeline extends Component {
 
 		return contactedLeads.map((each) => {
 			return (
-				<li>
+				<li key={each._id}>
 					<div>
 						<h4>{each.businessName}</h4>
 					</div>
@@ -18,8 +18,14 @@ class Pipeline extends Component {
 	render() {
 		return (
 			<div className="Pipeline">
-				<h3 className="pipeline-title">MY PIPELINE INCLUDES THESE LEADS:</h3>
-				<ul>{this.props.user.contactedLeads ? this.displayContactedLeads() : ''}</ul>
+				<div className="pipeline-prospects">
+					<div>
+						<h3 className="pipeline-title">Prospects:</h3>
+						<ul className="pipeline-list">
+							{this.props.user.contactedLeads ? this.displayContactedLeads() : ''}
+						</ul>
+					</div>
+				</div>
 			</div>
 		);
 	}

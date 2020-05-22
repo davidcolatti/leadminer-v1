@@ -23,6 +23,9 @@ const actions = {
 	},
 	getLeadsFromMaster: async () => {
 		return await service.get('/master-leads');
+	},
+	addLeadToContactedArray: async (leads) => {
+		return await service.post('/add-lead', leads);
 	}
 };
 

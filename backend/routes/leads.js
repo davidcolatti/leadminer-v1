@@ -22,7 +22,20 @@ router.post('/add-lead', isAuth, (req, res, next) => {
 			res.json(doc);
 		});
 	});
-	// User.update({ contactedLeads: req.body });
+});
+
+router.post('/send-index', isAuth, (req, res, next) => {
+	console.log(req.body, req.user);
+
+	User.findById(req.user._id).then((user) => {
+		console.log(user);
+		user.indexOfMasterLeads = req.body.index;
+		user.save((err, doc) => {
+			if (err) throw err;
+
+			res.json(doc);
+		});
+	});
 });
 
 function isAuth(req, res, next) {

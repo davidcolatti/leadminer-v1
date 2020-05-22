@@ -3,16 +3,19 @@ import actions from '../../services/index';
 
 class CompanyDetails extends Component {
 	addLeadToContactedArray = async () => {
-		let contactedLead = this.props.user.contactedLeads;
+		let matchingleads = this.props.user.contactedLeads.find((cLeads) => {
+			return cLeads._id === this.props.selectedLead._id;
+		});
 
-		if (contactedLead.includes(this.props.selectedLead)) {
-			console.log('this lead exists');
-		} else {
-			contactedLead.push(this.props.selectedLead);
+		if (!matchingleads) {
+			let contactedLeads = this.props.user.contactedLeads;
+			contactedLeads.push(this.props.selectedLead);
 
-			actions.addLeadToContactedArray(contactedLead).then((res) => console.log(res));
+			actions.addLeadToContactedArray(contactedLeads).then((res) => console.log(res));
 
 			console.log(`i added ${this.props.selectedLead.businessName} to my contacted leads array`);
+		} else {
+			console.log('this lead exists');
 		}
 	};
 

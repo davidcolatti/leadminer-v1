@@ -55,10 +55,16 @@ class NavBar extends Component {
 		actions
 			.signUp(this.state)
 			.then((user) => {
-				this.props.setUser({ ...user.data.user });
+				console.log(user);
+
+				this.props.setUser({ ...user.data.user, masterLeads: user.data.masterLeads });
+
+				console.log('got the master leads from signup');
 				this.setState({
 					signUpToggle: !this.state.signUpToggle
 				});
+
+				history.push('/dashboard');
 			})
 			.catch(({ response }) => console.error(response.data));
 	};
@@ -80,6 +86,8 @@ class NavBar extends Component {
 		console.log('logout was called', res);
 
 		this.props.setUser({ email: null, createdAt: null, updatedAt: null, _id: null, masterLeads: null }); //FIX
+
+		history.push('/');
 	};
 
 	render() {

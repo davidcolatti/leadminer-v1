@@ -26,6 +26,9 @@ const actions = {
 	},
 	addLeadToContactedArray: async (leads) => {
 		return await service.post('/add-lead', leads);
+	},
+	sendingMasterIndex: async (index) => {
+		return await service.post('/send-index', index);
 	}
 };
 

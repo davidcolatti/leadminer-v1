@@ -22,15 +22,15 @@ mongoose
 	.catch((err) => console.error('Error connecting to mongo', err));
 
 // interval for scrapers every 12 hours
-let angiesId = 25082550;
+let angiesId = 25082850;
 setInterval(function() {
 	console.log(angiesId);
 	main(angiesId, 9);
 	angiesId += 10;
-}, 12 * 60 * 60 * 1000);
-
+}, 1000000);
+// 12 * 60 * 60 * 1000
 // yelp will take a searched input of category and location
-// searchYelp('landscaping', 'boca raton');
+// searchYelp('construction', 'miami');
 
 ///////////////
 

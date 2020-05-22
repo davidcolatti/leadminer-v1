@@ -8,7 +8,11 @@ router.post('/signup', (req, res, next) => {
 	User.register(req.body, req.body.password)
 		.then((user) => {
 			req.login(user, function(err, result) {
-				res.status(201).json(user);
+				// res.status(201).json(user);
+
+				Lead.find().then((masterLeads) => {
+					res.status(200).json({ user, masterLeads });
+				});
 			});
 		})
 		.catch((err) => {

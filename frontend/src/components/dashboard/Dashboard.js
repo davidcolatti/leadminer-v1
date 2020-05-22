@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CompanyDetails from './CompanyDetails';
-// import actions from '../../services';
+import actions from '../../services';
 
 class Dashboard extends Component {
 	state = {
@@ -15,6 +15,7 @@ class Dashboard extends Component {
 
 	displayLead = () => {
 		let masterLeads = this.props.user.masterLeads;
+
 		return Array.from({ length: 3 }, (_, i) => {
 			return (
 				<div

@@ -26,11 +26,11 @@ class App extends Component {
 	}
 
 	setUser = (user) => {
-		if (user._id)
-			this.setState({
-				...user
-			});
-		else history.push('/');
+		console.log(user);
+
+		this.setState({
+			...user
+		});
 	};
 
 	render() {

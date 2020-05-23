@@ -12,7 +12,8 @@ const leadSchema = new Schema({
 	secondPhoneNumber: String,
 	notes: Array,
 	category: Array,
-	email: String
+	email: String,
+	disposition: String
 });
 
 const Lead = mongoose.model('Lead', leadSchema);

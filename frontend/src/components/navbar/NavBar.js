@@ -106,7 +106,22 @@ class NavBar extends Component {
 						</span>
 						<span className="nav-links">
 							<Link to="/dashboard">Dashboard</Link>
-							<Link to="/pipeline">Pipeline</Link>
+							{/* <Link to="/prospecting">Prospecting</Link> */}
+							<span className="dropdown">
+								<Link to="/prospecting">
+									Prospecting<i class="arrow down" />
+								</Link>
+								<span className="dropdown-content">
+									<ul>
+										<li>
+											<Link to="/prospecting">Quick Find</Link>
+										</li>
+										<li>
+											<Link to="/prospecting">Custom Search Tool</Link>
+										</li>
+									</ul>
+								</span>
+							</span>
 							<Link to="/" onClick={this.logOut}>
 								Sign Out
 							</Link>

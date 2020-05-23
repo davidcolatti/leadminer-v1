@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import CompanyDetails from './CompanyDetails';
 import actions from '../../services';
 
@@ -14,41 +14,61 @@ class Dashboard extends Component {
 	};
 
 	displayLead = () => {
-		let masterLeads = this.props.user.masterLeads;
+		let contactedLeads = this.props.user.contactedLeads;
 
-		return Array.from({ length: 3 }, (_, i) => {
+		return Array.from({ length: contactedLeads.length }, (_, i) => {
 			return (
-				<div
-					key={i}
-					className="lead-segment"
-					onClick={() =>
-						this.setState(
-							{
-								selectedLead: masterLeads[this.state.index + i]
-							},
-							() => console.log(this.state)
-						)}
-				>
-					<h3>{masterLeads[this.state.index + i].businessName}</h3>
-				</div>
+				<Fragment>
+					<tr className="dash-company-row">
+						<td>{contactedLeads[this.state.index + i].businessName}</td>
+						<td>{contactedLeads[this.state.index + i].category[0]}</td>
+						<td>{contactedLeads[this.state.index + i].phoneNumber}</td>
+						<td>{contactedLeads[this.state.index + i].city}</td>
+						<td>{contactedLeads[this.state.index + i].state}</td>
+						<td>Prospect</td>
+					</tr>
+				</Fragment>
 			);
 		});
+	};
+
+	displayTable = () => {
+		return (
+			<div>
+				<div class="tbl-header">
+					<table cellpadding="0" cellspacing="0" border="0">
+						<thead>
+							<tr>
+								<th>Company</th>
+								<th>Category</th>
+								<th>Phone</th>
+								<th>City</th>
+								<th>State</th>
+								<th>Disposition</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<div class="tbl-content">
+					<table cellpadding="0" cellspacing="0" border="0">
+						<tbody>{this.props.user.masterLeads ? this.displayLead() : 'Loading...'}</tbody>
+					</table>
+				</div>
+			</div>
+		);
 	};
 
 	render() {
 		return (
 			<div className="Dashboard">
 				<div className="dashboard-content">
-					{this.props.user.masterLeads ? this.displayLead() : ''}
-					<div className="dashboard-button">
-						<img
-							onClick={this.nextLead}
-							alt="right button"
-							src="https://i.ya-webdesign.com/images/white-arrow-transparent-png-1.png"
-						/>
-					</div>
+					{/* <div className="dashboard-list">
+						<input type="text" className="dashboard-search" placeholder="Search By Category.." />
+						{this.props.user.masterLeads ? this.displayLead() : ''}
+					</div> */}
+					{/* <CompanyDetails selectedLead={this.state.selectedLead} user={this.props.user} /> */}
+					{this.displayTable()}
 				</div>
-				<CompanyDetails selectedLead={this.state.selectedLead} user={this.props.user} />
 			</div>
 		);
 	}

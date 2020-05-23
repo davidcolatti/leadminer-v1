@@ -32,7 +32,7 @@ class CompanyDetails extends Component {
 							<h4>{`${this.props.selectedLead.city}, ${this.props.selectedLead.state}`}</h4>
 						</div>
 						<button className="selected-button" onClick={this.addLeadToContactedArray}>
-							+
+							Add
 						</button>
 					</div>
 				) : (

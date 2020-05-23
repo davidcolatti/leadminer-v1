@@ -52,6 +52,49 @@ body {
 	border-radius: 50%;
 }
 
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #000000a6;
+	/* min-width: 160px; */
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	padding: 0;
+	z-index: 1;
+}
+
+.dropdown-content ul {
+	padding-left: 10px;
+	list-style-type: none;
+}
+
+.dropdown-content li {
+	margin-bottom: 1rem;
+}
+
+.dropdown-content a {
+	color: rgb(255, 255, 255);
+	text-align: center;
+	font-size: 15px;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.arrow {
+	margin-left: .4rem;
+	margin-bottom: .1rem;
+	border: solid white;
+	border-width: 0 2px 2px 0;
+	display: inline-block;
+	padding: 3px;
+}
+
+.down {
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+}
+
 /* Landing Page */
 
 .LandingPage {
@@ -134,51 +177,111 @@ body {
 	text-shadow: 1px 1px black;
 }
 
+.dashboard-search {
+	width: 80%;
+	height: 3%;
+	margin-left: 2rem;
+	margin-bottom: 1rem;
+	border-radius: 3px;
+}
+
 .dashboard-content {
 	display: flex;
-	justify-content: flex-start;
-}
-
-.dashboard-content img {
-	margin-left: 1rem;
-	height: 50px;
-	width: 50px;
-	border-radius: 90%;
-}
-
-.dashboard-content img:hover {
-	height: 52px;
-	width: 52px;
-	cursor: pointer;
-}
-
-.dashboard-button {
-	align-self: center;
-	margin-right: 1rem;
-	height: 60px;
-	width: 60px;
-}
-
-.dashboard-notes {
-	display: flex;
 	flex-direction: row;
-	justify-content: center;
+}
+
+.dashboard-list {
+	padding-top: 1rem;
+	width: 50%;
+	margin-left: 1rem;
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .lead-segment {
-	margin: 2rem;
-	border-bottom: 1px solid white;
-	width: 40%;
-	text-align: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-left: 1rem;
 }
 
 .lead-segment h3 {
-	margin-bottom: 3rem;
+	margin-bottom: 1.5rem;
 }
 
-.lead-segment h3:hover {
-	color: rgb(207, 205, 205);
+.lead-segment button {
+	align-self: center;
+	width: 40px;
+	height: 25px;
+	border-radius: 12px;
+	margin-right: 1rem;
+}
+
+.lead-segment button:hover {
+	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 	cursor: pointer;
+}
+
+/* DASHBOARD TABLE */
+
+.Dashboard {
+	position: fixed;
+}
+
+.Dashboard h1 {
+	font-size: 30px;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 300;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.Dashboard table {
+	width: 100%;
+	table-layout: fixed;
+}
+.tbl-header {
+	background-color: rgba(255, 255, 255, 0.3);
+}
+.tbl-content {
+	height: 400px;
+	overflow-x: auto;
+	margin-top: 0px;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.Dashboard th {
+	padding: 20px 15px;
+	text-align: left;
+	font-weight: 500;
+	font-size: 12px;
+	color: #fff;
+	text-transform: uppercase;
+}
+.Dashboard td {
+	padding: 15px;
+	text-align: left;
+	vertical-align: middle;
+	font-weight: 300;
+	font-size: 13px;
+	color: #fff;
+	border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+.dash-company-row:hover {
+	background-color: rgba(255, 255, 255, 0.3);
+	cursor: pointer;
+}
+
+/* for custom scrollbar for webkit browser*/
+
+::-webkit-scrollbar {
+	width: 6px;
+}
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-thumb {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 /* COMPANY DETAILS */
@@ -210,39 +313,86 @@ body {
 
 .selected-button {
 	margin-left: 1rem;
-	height: 32px;
-	width: 32px;
-	border-radius: 90%;
+	height: 30px;
+	width: 50px;
+	border-radius: 12px;
 	margin-bottom: 2rem;
 	align-self: flex-end;
 }
 
 .selected-button:hover {
-	cursor: pointer;
 	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+	cursor: pointer;
 }
 
-/* PIPELINE */
+/* Prospecting */
 
-.Pipeline {
+.Prospecting {
 	width: 100vw;
 	height: 100vh;
-	background-image: url('https://i.stack.imgur.com/28iBm.png');
 	color: white;
 	text-shadow: 1px 1px black;
+	background-image: url('https://i.stack.imgur.com/28iBm.png');
+	position: fixed;
 }
 
-.pipeline-prospects {
-	display: flex;
-	justify-content: flex-start;
+.Prospecting h1 {
+	font-size: 30px;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 300;
 	text-align: center;
+	margin-bottom: 15px;
 }
 
-.pipeline-list {
-	list-style-type: none;
+.Prospecting table {
+	width: 100%;
+	table-layout: fixed;
 }
 
-.pipeline-title {
-	margin-left: 2rem;
-	text-decoration: underline;
+.tbl-header {
+	background-color: rgba(255, 255, 255, 0.3);
+}
+.tbl-content {
+	height: 400px;
+	overflow-x: auto;
+	margin-top: 0px;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.Prospecting th {
+	padding: 20px 15px;
+	text-align: left;
+	font-weight: 500;
+	font-size: 12px;
+	color: #fff;
+	text-transform: uppercase;
+}
+.Prospecting td {
+	padding: 15px;
+	text-align: left;
+	vertical-align: middle;
+	font-weight: 300;
+	font-size: 13px;
+	color: #fff;
+	border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+.prospecting-company-row:hover {
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+.prospecting-company-row button:hover {
+	cursor: pointer;
+}
+
+/* for custom scrollbar for webkit browser*/
+
+::-webkit-scrollbar {
+	width: 6px;
+}
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-thumb {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }

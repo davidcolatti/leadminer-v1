@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import CompanyDetails from './CompanyDetails';
 import actions from '../../services';
+import Loading from '../loading/Loading';
 
 class Dashboard extends Component {
 	state = {
@@ -51,7 +52,7 @@ class Dashboard extends Component {
 				</div>
 				<div class="tbl-content">
 					<table cellpadding="0" cellspacing="0" border="0">
-						<tbody>{this.props.user.masterLeads ? this.displayLead() : 'Loading...'}</tbody>
+						<tbody>{this.props.user.masterLeads ? this.displayLead() : <Loading />}</tbody>
 					</table>
 				</div>
 			</div>

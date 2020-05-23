@@ -36,7 +36,11 @@ class Prospecting extends Component {
 						<td>{masterLeads[this.state.index + i].city}</td>
 						<td>{masterLeads[this.state.index + i].state}</td>
 						<td>
-							<button onClick={() => this.addLeadToDash(masterLeads[this.state.index + i])}>Add</button>
+							<img
+								className="addDashBtn"
+								src="https://www.iconsdb.com/icons/preview/white/plus-4-xxl.png"
+								onClick={() => this.addLeadToDash(masterLeads[this.state.index + i])}
+							/>
 						</td>
 					</tr>
 				</Fragment>

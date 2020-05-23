@@ -9,6 +9,12 @@ class SearchTool extends Component {
 		searchTerm: ''
 	};
 
+	handleInput = (e) => {
+		this.setState({
+			searchTerm: e.target.value.toLowerCase()
+		});
+	};
+
 	addLeadToDash = (lead) => {
 		let matchingleads = this.props.user.contactedLeads.find((cLeads) => {
 			return cLeads._id === lead._id;
@@ -27,23 +33,41 @@ class SearchTool extends Component {
 	};
 
 	displayLead = () => {
-		let masterLeads = this.props.user.masterLeads;
-
-		return Array.from({ length: 20 }, (_, i) => {
-			return (
-				<Fragment>
-					{/* <tr className="prospecting-company-row">
-						<td>{masterLeads[this.state.index + i].businessName}</td>
-						<td>{masterLeads[this.state.index + i].category[0]}</td>
-						<td>{masterLeads[this.state.index + i].city}</td>
-						<td>{masterLeads[this.state.index + i].state}</td>
-						<td>
-							<button onClick={() => this.addLeadToDash(masterLeads[this.state.index + i])}>Add</button>
-						</td>
-					</tr> */}
-				</Fragment>
-			);
+		let masterLeads = this.props.user.masterLeads.filter((leadObj) => {
+			if (leadObj.businessName.toLowerCase().includes(this.state.searchTerm)) {
+				return true;
+			} else if (leadObj.category[0].toLowerCase().includes(this.state.searchTerm)) {
+				return true;
+			} else if (leadObj.city.toLowerCase().includes(this.state.searchTerm)) {
+				return true;
+			} else if (leadObj.state.toLowerCase().includes(this.state.searchTerm)) {
+				return true;
+			} else {
+				return false;
+			}
 		});
+
+		if (this.state.searchTerm.length !== 0) {
+			return Array.from({ length: masterLeads.length }, (_, i) => {
+				return (
+					<Fragment>
+						<tr className="prospecting-company-row">
+							<td>{masterLeads[this.state.index + i].businessName}</td>
+							<td>{masterLeads[this.state.index + i].category[0]}</td>
+							<td>{masterLeads[this.state.index + i].city}</td>
+							<td>{masterLeads[this.state.index + i].state}</td>
+							<td>
+								<img
+									className="addDashBtn"
+									src="https://www.iconsdb.com/icons/preview/white/plus-4-xxl.png"
+									onClick={() => this.addLeadToDash(masterLeads[this.state.index + i])}
+								/>
+							</td>
+						</tr>
+					</Fragment>
+				);
+			});
+		}
 	};
 
 	displayTable = () => {
@@ -75,7 +99,13 @@ class SearchTool extends Component {
 		return (
 			<div className="Prospecting">
 				<div class="container">
-					<input id="searchBar" class="searchbar" type="text" placeholder="Search..." />
+					<input
+						id="searchBar"
+						onChange={this.handleInput}
+						class="searchbar"
+						type="text"
+						placeholder="Search..."
+					/>
 				</div>
 				<div className="pipeline-prospects">{this.displayTable()}</div>
 			</div>

@@ -14,6 +14,20 @@ class Dashboard extends Component {
 		});
 	};
 
+	deleteFromContactedLeads = (index) => {
+		let contactedLeads = this.props.user.contactedLeads;
+		contactedLeads.splice(index, 1);
+
+		actions
+			.deleteLeadFromContactedLeadsArray(contactedLeads)
+			.then((res) => console.log(res))
+			.catch((err) => console.log(err));
+
+		this.props.setUser({
+			...this.props.user
+		});
+	};
+
 	displayLead = () => {
 		let contactedLeads = this.props.user.contactedLeads;
 
@@ -27,6 +41,13 @@ class Dashboard extends Component {
 						<td>{contactedLeads[this.state.index + i].city}</td>
 						<td>{contactedLeads[this.state.index + i].state}</td>
 						<td>Prospect</td>
+						<td>
+							<img
+								src="https://www.iconsdb.com/icons/preview/white/trash-2-xxl.png"
+								className="deleteBtn"
+								onClick={() => this.deleteFromContactedLeads(this.state.index + i)}
+							/>
+						</td>
 					</tr>
 				</Fragment>
 			);
@@ -46,6 +67,7 @@ class Dashboard extends Component {
 								<th>City</th>
 								<th>State</th>
 								<th>Disposition</th>
+								<th>Delete</th>
 							</tr>
 						</thead>
 					</table>

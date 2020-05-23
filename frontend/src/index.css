@@ -224,6 +224,14 @@ body {
 	cursor: pointer;
 }
 
+.deleteBtn {
+	width: 20px;
+}
+
+.deleteBtn:hover {
+	width: 21px;
+}
+
 /* DASHBOARD TABLE */
 
 .Dashboard {
@@ -574,3 +582,5 @@ body {
 	border-bottom: white solid 2px;
 	outline: none;
 }
+
+/* LOGIN */

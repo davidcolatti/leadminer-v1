@@ -106,7 +106,6 @@ class NavBar extends Component {
 						</span>
 						<span className="nav-links">
 							<Link to="/dashboard">Dashboard</Link>
-							{/* <Link to="/prospecting">Prospecting</Link> */}
 							<span className="dropdown">
 								<Link to="/prospecting">
 									Prospecting<i class="arrow down" />

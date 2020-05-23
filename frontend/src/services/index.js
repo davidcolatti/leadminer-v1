@@ -29,6 +29,9 @@ const actions = {
 	},
 	sendingMasterIndex: async (index) => {
 		return await service.post('/send-index', index);
+	},
+	deleteLeadFromContactedLeadsArray: async (leads) => {
+		return await service.post('/delete-lead', leads);
 	}
 };
 

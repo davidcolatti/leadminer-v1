@@ -40,8 +40,16 @@ class App extends Component {
 				<NavBar setUser={this.setUser} email={this.state.email} />
 				<Switch>
 					<Route exact path="/" render={(props) => <LandingPage {...props} email={this.state.email} />} />
-					<Route exact path="/dashboard" render={(props) => <Dashboard {...props} user={this.state} />} />
-					<Route exact path="/prospecting" render={(props) => <Prospecting {...props} user={this.state} />} />
+					<Route
+						exact
+						path="/dashboard"
+						render={(props) => <Dashboard setUser={this.setUser} {...props} user={this.state} />}
+					/>
+					<Route
+						exact
+						path="/prospecting"
+						render={(props) => <Prospecting setUser={this.setUser} {...props} user={this.state} />}
+					/>
 					<Route
 						exact
 						path="/prospecting/search-tool"

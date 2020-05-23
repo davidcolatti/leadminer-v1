@@ -24,6 +24,20 @@ router.post('/add-lead', isAuth, (req, res, next) => {
 	});
 });
 
+router.post('/delete-lead', isAuth, (req, res, next) => {
+	console.log(req.body, req.user);
+
+	User.findById(req.user._id).then((user) => {
+		console.log(user);
+		user.contactedLeads = req.body;
+		user.save((err, doc) => {
+			if (err) throw err;
+
+			res.json(doc);
+		});
+	});
+});
+
 router.post('/send-index', isAuth, (req, res, next) => {
 	console.log(req.body, req.user);
 

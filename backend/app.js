@@ -31,7 +31,7 @@ setInterval(function() {
 
 // 12 * 60 * 60 * 1000
 
-// yelp will take a searched input of category and location
+// yelp will take a searched input of query in SearchTools component
 // searchYelp('lawyer', 'miami');
 
 ///////////////

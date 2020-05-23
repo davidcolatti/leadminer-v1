@@ -117,7 +117,7 @@ class NavBar extends Component {
 											<Link to="/prospecting">Quick Find</Link>
 										</li>
 										<li>
-											<Link to="/prospecting">Custom Search Tool</Link>
+											<Link to="/prospecting/search-tool">Custom Search Tool</Link>
 										</li>
 									</ul>
 								</span>

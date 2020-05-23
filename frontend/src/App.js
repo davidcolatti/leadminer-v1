@@ -5,6 +5,7 @@ import NavBar from './components/navbar/NavBar';
 import LandingPage from './components/landingpage/LandingPage.js';
 import Dashboard from './components/dashboard/Dashboard';
 import Prospecting from './components/prospecting/Prospecting';
+import SearchTool from './components/prospecting/SearchTool';
 
 import history from './components/history/History';
 import actions from './services/index';
@@ -41,6 +42,11 @@ class App extends Component {
 					<Route exact path="/" render={(props) => <LandingPage {...props} email={this.state.email} />} />
 					<Route exact path="/dashboard" render={(props) => <Dashboard {...props} user={this.state} />} />
 					<Route exact path="/prospecting" render={(props) => <Prospecting {...props} user={this.state} />} />
+					<Route
+						exact
+						path="/prospecting/search-tool"
+						render={(props) => <SearchTool {...props} user={this.state} />}
+					/>
 					<Route component={NotFound} />
 				</Switch>
 			</Router>

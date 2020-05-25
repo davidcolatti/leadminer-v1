@@ -41,8 +41,20 @@ class NavBar extends Component {
 		return (
 			<Fragment>
 				<form className="nav-form" action="/dashboard" onSubmit={this.handleLoginSubmit}>
-					<input name="email" placeholder="email" type="email" onChange={this.handleChange} />
-					<input name="password" placeholder="password" type="password" onChange={this.handleChange} />
+					<input
+						value={this.state.email}
+						name="email"
+						placeholder="email"
+						type="email"
+						onChange={this.handleChange}
+					/>
+					<input
+						value={this.state.password}
+						name="password"
+						placeholder="password"
+						type="password"
+						onChange={this.handleChange}
+					/>
 					<input type="submit" value="Log In" />
 				</form>
 			</Fragment>
@@ -73,8 +85,20 @@ class NavBar extends Component {
 		return (
 			<Fragment>
 				<form className="nav-form" onSubmit={this.handleSignUpSubmit}>
-					<input name="email" type="email" placeholder="email" onChange={this.handleChange} />
-					<input name="password" placeholder="password" type="password" onChange={this.handleChange} />
+					<input
+						value={this.state.email}
+						name="email"
+						type="email"
+						placeholder="email"
+						onChange={this.handleChange}
+					/>
+					<input
+						value={this.state.password}
+						name="password"
+						placeholder="password"
+						type="password"
+						onChange={this.handleChange}
+					/>
 					<input type="submit" value="Sign Up" />
 				</form>
 			</Fragment>
@@ -87,13 +111,15 @@ class NavBar extends Component {
 
 		this.props.setUser({ email: null, createdAt: null, updatedAt: null, _id: null, masterLeads: null });
 
+		this.setState({ email: '', password: '' });
+
 		history.push('/');
 	};
 
 	render() {
 		return (
 			<div>
-				{/* <span style={{ color: 'red' }}>temporary: {(this.props.email, JSON.stringify(this.props))}</span> */}
+				<span style={{ color: 'red' }}>temporary: {(this.props.email, JSON.stringify(this.props))}</span>
 
 				{this.props.email ? (
 					<nav className="NavBar">

@@ -113,7 +113,7 @@ class NavBar extends Component {
 								<span className="dropdown-content">
 									<ul>
 										<li>
-											<Link to="/prospecting">Quick Find</Link>
+											<Link to="/prospecting">Random Leads</Link>
 										</li>
 										<li>
 											<Link to="/prospecting/search-tool">Custom Search Tool</Link>

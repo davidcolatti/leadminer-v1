@@ -4,7 +4,7 @@ import actions from '../../services/index';
 
 class Prospecting extends Component {
 	state = {
-		index: 0
+		index: Math.floor(Math.random() * 1000)
 	};
 
 	addLeadToDash = (lead) => {
@@ -27,7 +27,7 @@ class Prospecting extends Component {
 	displayLead = () => {
 		let masterLeads = this.props.user.masterLeads;
 
-		return Array.from({ length: 20 }, (_, i) => {
+		return Array.from({ length: 10 }, (_, i) => {
 			return (
 				<Fragment>
 					<tr className="prospecting-company-row">

@@ -40,7 +40,7 @@ class Dashboard extends Component {
 						<td>{contactedLeads[this.state.index + i].phoneNumber}</td>
 						<td>{contactedLeads[this.state.index + i].city}</td>
 						<td>{contactedLeads[this.state.index + i].state}</td>
-						<td>Prospect</td>
+						<td>{contactedLeads[this.state.index + i].disposition}</td>
 						<td>
 							<img
 								src="https://www.iconsdb.com/icons/preview/white/trash-2-xxl.png"
@@ -84,14 +84,7 @@ class Dashboard extends Component {
 	render() {
 		return (
 			<div className="Dashboard">
-				<div className="dashboard-content">
-					{/* <div className="dashboard-list">
-						<input type="text" className="dashboard-search" placeholder="Search By Category.." />
-						{this.props.user.masterLeads ? this.displayLead() : ''}
-					</div> */}
-					{/* <CompanyDetails selectedLead={this.state.selectedLead} user={this.props.user} /> */}
-					{this.displayTable()}
-				</div>
+				<div className="dashboard-content">{this.displayTable()}</div>
 			</div>
 		);
 	}

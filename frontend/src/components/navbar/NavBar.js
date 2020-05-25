@@ -85,7 +85,7 @@ class NavBar extends Component {
 		let res = await actions.logOut();
 		console.log('logout was called', res);
 
-		this.props.setUser({ email: null, createdAt: null, updatedAt: null, _id: null, masterLeads: null }); //FIX
+		this.props.setUser({ email: null, createdAt: null, updatedAt: null, _id: null, masterLeads: null });
 
 		history.push('/');
 	};

@@ -51,7 +51,8 @@ async function scrapePages(pages) {
 			city: res.data.primaryAddress.city.name,
 			state: res.data.primaryAddress.region.abbreviation,
 			email: res.data.primaryContactInfo.email,
-			category: category
+			category: category,
+			disposition: 'Prospect'
 		};
 
 		Lead.findOne({ phoneNumber: data.phoneNumber }).then((res) => {

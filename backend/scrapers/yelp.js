@@ -24,8 +24,10 @@ function searchYelp(term, location) {
 					phoneNumber: each.display_phone,
 					city: each.location.city,
 					state: each.location.state,
-					category: each.categories.map((res) => res.title)
+					category: each.categories.map((res) => res.title),
+					disposition: 'Prospect'
 				};
+
 				console.log(data);
 				Lead.findOne({ phoneNumber: data.phoneNumber }).then((res) => {
 					if (res) {

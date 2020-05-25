@@ -27,7 +27,7 @@ class Prospecting extends Component {
 	displayLead = () => {
 		let masterLeads = this.props.user.masterLeads;
 
-		return Array.from({ length: 10 }, (_, i) => {
+		return Array.from({ length: 20 }, (_, i) => {
 			return (
 				<Fragment>
 					<tr className="prospecting-company-row">
@@ -37,6 +37,7 @@ class Prospecting extends Component {
 						<td>{masterLeads[this.state.index + i].state}</td>
 						<td>
 							<img
+								alt="white plus"
 								className="addDashBtn"
 								src="https://www.iconsdb.com/icons/preview/white/plus-4-xxl.png"
 								onClick={() => this.addLeadToDash(masterLeads[this.state.index + i])}

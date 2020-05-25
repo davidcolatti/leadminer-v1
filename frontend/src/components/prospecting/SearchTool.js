@@ -58,6 +58,7 @@ class SearchTool extends Component {
 							<td>{masterLeads[this.state.index + i].state}</td>
 							<td>
 								<img
+									alt="white add"
 									className="addDashBtn"
 									src="https://www.iconsdb.com/icons/preview/white/plus-4-xxl.png"
 									onClick={() => this.addLeadToDash(masterLeads[this.state.index + i])}

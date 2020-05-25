@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import CompanyDetails from './CompanyDetails';
+import { Link } from 'react-router-dom';
 import actions from '../../services';
 import Loading from '../loading/Loading';
 
@@ -35,7 +35,11 @@ class Dashboard extends Component {
 			return (
 				<Fragment>
 					<tr className="dash-company-row">
-						<td>{contactedLeads[this.state.index + i].businessName}</td>
+						<td>
+							<Link to={`/dashboard/${contactedLeads[this.state.index + i]._id}`}>
+								{contactedLeads[this.state.index + i].businessName}
+							</Link>
+						</td>
 						<td>{contactedLeads[this.state.index + i].category[0]}</td>
 						<td>{contactedLeads[this.state.index + i].phoneNumber}</td>
 						<td>{contactedLeads[this.state.index + i].city}</td>
@@ -43,6 +47,7 @@ class Dashboard extends Component {
 						<td>{contactedLeads[this.state.index + i].disposition}</td>
 						<td>
 							<img
+								alt="white delete"
 								src="https://www.iconsdb.com/icons/preview/white/trash-2-xxl.png"
 								className="deleteBtn"
 								onClick={() => this.deleteFromContactedLeads(this.state.index + i)}

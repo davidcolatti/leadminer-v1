@@ -231,21 +231,18 @@ body {
 
 .deleteBtn:hover {
 	width: 21px;
+	cursor: pointer;
 }
 
 /* DASHBOARD TABLE */
 
 .Dashboard {
-	position: fixed;
+	/* position: fixed; */
 }
 
-.Dashboard h1 {
-	font-size: 30px;
-	color: #fff;
-	text-transform: uppercase;
-	font-weight: 300;
-	text-align: center;
-	margin-bottom: 15px;
+.Dashboard a {
+	text-decoration: none;
+	color: white;
 }
 
 .Dashboard table {
@@ -281,7 +278,7 @@ body {
 
 .dash-company-row:hover {
 	background-color: rgba(255, 255, 255, 0.3);
-	cursor: pointer;
+	/* cursor: pointer; */
 }
 
 /* for custom scrollbar for webkit browser*/
@@ -294,47 +291,6 @@ body {
 }
 ::-webkit-scrollbar-thumb {
 	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-/* COMPANY DETAILS */
-
-.CompanyDetail {
-	width: 100vw;
-	height: 50vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.selected-company {
-	display: flex;
-	flex-direction: row;
-	text-align: center;
-	font-size: 25px;
-}
-
-.selected-content a {
-	text-decoration: none;
-	color: white;
-	text-shadow: 1px 1px black;
-}
-
-.selected-content a:hover {
-	color: rgb(207, 205, 205);
-}
-
-.selected-button {
-	margin-left: 1rem;
-	height: 30px;
-	width: 50px;
-	border-radius: 12px;
-	margin-bottom: 2rem;
-	align-self: flex-end;
-}
-
-.selected-button:hover {
-	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-	cursor: pointer;
 }
 
 /* Prospecting */
@@ -578,7 +534,6 @@ body {
 	color: white;
 	font-size: 1em;
 	font-weight: bold;
-	/* transition: 0.2s; */
 }
 
 .searchbar:focus {
@@ -588,4 +543,70 @@ body {
 	transition: 0.3s;
 	border-bottom: white solid 2px;
 	outline: none;
+}
+
+/* COMPANY CARD */
+
+.CompanyCard {
+	width: 100vw;
+	height: 100vh;
+	color: white;
+	text-shadow: 1px 1px black;
+	background-image: url('https://i.stack.imgur.com/28iBm.png');
+}
+
+.company-card-form {
+	width: 70%;
+}
+
+.li-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+fieldset {
+	background-color: rgba(0, 0, 0, 0.445);
+}
+
+.company-card-ul {
+	width: 100%;
+	list-style-type: none;
+	padding-right: 2rem;
+}
+
+.company-card-li {
+	width: 130%;
+	margin-bottom: 1rem;
+}
+
+.company-card-li input {
+	border: none;
+	border-bottom: white solid 2px;
+	font-size: 90%;
+	width: 70%;
+	color: white;
+	text-shadow: 1px 1px black;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.company-card-li input:focus {
+	width: 90%;
+	font-weight: bold;
+	transition: 0.3s;
+	border-bottom: white solid 2px;
+	outline: none;
+}
+
+.form__controls {
+	margin-top: .5rem;
+}
+
+.company-card-notes {
+	margin-left: 15%;
+	margin-top: 1rem;
+}
+
+.company-card-notes textarea {
+	margin-top: 1rem;
 }

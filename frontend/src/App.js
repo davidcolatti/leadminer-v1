@@ -38,31 +38,33 @@ class App extends Component {
 	render() {
 		return (
 			<Router history={history}>
-				<NavBar setUser={this.setUser} email={this.state.email} />
-				<Switch>
-					<Route exact path="/" render={(props) => <LandingPage {...props} email={this.state.email} />} />
-					<Route
-						exact
-						path="/dashboard"
-						render={(props) => <Dashboard setUser={this.setUser} {...props} user={this.state} />}
-					/>
-					<Route
-						exact
-						path="/prospecting"
-						render={(props) => <Prospecting setUser={this.setUser} {...props} user={this.state} />}
-					/>
-					<Route
-						exact
-						path="/prospecting/search-tool"
-						render={(props) => <SearchTool {...props} user={this.state} />}
-					/>
-					<Route
-						exact
-						path="/dashboard/:id"
-						render={(props) => <CompanyCard {...props} user={this.state} />}
-					/>
-					<Route component={NotFound} />
-				</Switch>
+				<div className="App">
+					<NavBar setUser={this.setUser} email={this.state.email} />
+					<Switch>
+						<Route exact path="/" render={(props) => <LandingPage {...props} email={this.state.email} />} />
+						<Route
+							exact
+							path="/dashboard"
+							render={(props) => <Dashboard setUser={this.setUser} {...props} user={this.state} />}
+						/>
+						<Route
+							exact
+							path="/prospecting"
+							render={(props) => <Prospecting setUser={this.setUser} {...props} user={this.state} />}
+						/>
+						<Route
+							exact
+							path="/prospecting/search-tool"
+							render={(props) => <SearchTool {...props} user={this.state} />}
+						/>
+						<Route
+							exact
+							path="/dashboard/:id"
+							render={(props) => <CompanyCard {...props} user={this.state} />}
+						/>
+						<Route component={NotFound} />
+					</Switch>
+				</div>
 			</Router>
 		);
 	}

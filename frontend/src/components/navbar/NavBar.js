@@ -119,7 +119,7 @@ class NavBar extends Component {
 	render() {
 		return (
 			<div>
-				<span style={{ color: 'red' }}>temporary: {(this.props.email, JSON.stringify(this.props))}</span>
+				{/* <span style={{ color: 'red' }}>temporary: {(this.props.email, JSON.stringify(this.props))}</span> */}
 
 				{this.props.email ? (
 					<nav className="NavBar">

@@ -6,6 +6,14 @@ body {
 	font-family: Montserrat;
 }
 
+.App {
+	width: 100vw;
+	height: 100vh;
+	background-image: url('https://i.stack.imgur.com/28iBm.png');
+	color: white;
+	text-shadow: 1px 1px black;
+}
+
 /* NAV BAR */
 
 .NavBar {
@@ -14,7 +22,7 @@ body {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: #000000;
+	background-color: rgba(0, 0, 0, 0.445);
 }
 
 .nav-links {
@@ -50,7 +58,7 @@ body {
 
 .emblem-img {
 	background-color: white;
-	border: 2px solid rgb(255, 255, 255);
+	border: 2px solid white;
 	width: 60px;
 	border-radius: 50%;
 }
@@ -59,7 +67,6 @@ body {
 	display: none;
 	position: absolute;
 	background-color: #000000a6;
-	/* min-width: 160px; */
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 	padding: 0;
 	z-index: 1;
@@ -101,9 +108,27 @@ body {
 /* Landing Page */
 
 .LandingPage {
-	/* border: 1px solid red; */
 	width: 100vw;
 	height: 100vh;
+}
+
+.landing-icon {
+	margin-right: 10%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+
+.landing-quote {
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	margin-right: 5rem;
+}
+
+.landing-quote i {
+	margin-top: 1rem;
+	font-size: 20px;
 }
 
 .landing-photo {
@@ -113,8 +138,12 @@ body {
 	background-size: cover;
 	background-repeat: no-repeat;
 	height: 100%;
-	align-items: center;
 	justify-content: flex-end;
+}
+
+.landing-icon-guy {
+	width: 390px;
+	height: 450px;
 }
 
 .landing-logo {
@@ -134,6 +163,7 @@ body {
 	color: white;
 	text-shadow: 1px 1px black;
 	padding: 1rem;
+	background-color: rgba(0, 0, 0, 0.445);
 }
 
 .landing-feature {
@@ -565,6 +595,7 @@ body {
 }
 
 fieldset {
+	border-radius: 12px;
 	width: 110%;
 	background-color: rgba(0, 0, 0, 0.445);
 }
@@ -625,6 +656,7 @@ fieldset {
 	border: 2px solid white;
 	color: white;
 	text-shadow: 1px 1px black;
+	font-size: 14px;
 }
 
 .form_element-select:focus {

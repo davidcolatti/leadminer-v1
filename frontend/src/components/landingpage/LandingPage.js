@@ -6,8 +6,16 @@ class LandingPage extends Component {
 			<div>
 				<div className="LandingPage">
 					<div className="landing-photo">
-						<div className="landing-logo">
-							<strong>LeadMiner</strong>
+						<div className="landing-icon">
+							<h1 className="landing-quote">
+								<strong>LeadMiner</strong>
+								<i>" good leads, easy sales "</i>
+							</h1>
+							<img
+								alt="guy icon"
+								className="landing-icon-guy"
+								src="https://cdn.pixabay.com/photo/2019/09/23/12/36/man-4498454_960_720.png"
+							/>
 						</div>
 						<div className="features">
 							<div className="landing-feature">

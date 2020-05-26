@@ -1,6 +1,19 @@
 import React, { Component } from 'react';
+import actions from '../../services/index';
 
 class LandingPage extends Component {
+	state = {
+		domainCount: ''
+	};
+
+	async componentDidMount() {
+		actions.getLeadsFromMaster().then((res) => {
+			this.setState({
+				domainCount: res.data.length
+			});
+		});
+	}
+
 	render() {
 		return (
 			<div>
@@ -19,7 +32,7 @@ class LandingPage extends Component {
 						</div>
 						<div className="features">
 							<div className="landing-feature">
-								<h2>Fresh Leads</h2>
+								<h2>{`${this.state.domainCount} Fresh Leads`}</h2>
 								<p>
 									Our software is created to mine small business information that is brand new, with
 									little to no web-presence.

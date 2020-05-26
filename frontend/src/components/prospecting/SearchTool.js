@@ -6,12 +6,21 @@ import actions from '../../services/index';
 class SearchTool extends Component {
 	state = {
 		index: 0,
-		searchTerm: ''
+		searchTerm: '',
+		searchType: 'businessName'
 	};
 
 	handleInput = (e) => {
 		this.setState({
 			searchTerm: e.target.value.toLowerCase()
+		});
+	};
+
+	handleRadioChange = (e) => {
+		console.log(e.target.value);
+
+		this.setState({
+			searchType: e.target.value
 		});
 	};
 
@@ -34,10 +43,6 @@ class SearchTool extends Component {
 
 	displayLead = () => {
 		let masterLeads = [ ...this.props.user.masterLeads ].filter((leadObj) => {
-			if (!leadObj.category[0]) {
-				console.log(leadObj);
-			}
-
 			if (leadObj.businessName.toLowerCase().includes(this.state.searchTerm)) {
 				return true;
 			} else if (leadObj.category[0].toLowerCase().includes(this.state.searchTerm)) {
@@ -104,11 +109,56 @@ class SearchTool extends Component {
 		return (
 			<div className="Prospecting">
 				<div class="container">
+					<div className="container-radio">
+						<span>
+							<input
+								type="radio"
+								id="businessName"
+								name="search"
+								value="businessName"
+								defaultChecked
+								onChange={(e) => this.handleRadioChange(e)}
+							/>
+							<label for="businessName">Company</label>
+						</span>
+						<span>
+							<input
+								onChange={(e) => this.handleRadioChange(e)}
+								type="radio"
+								id="category"
+								name="search"
+								value="category"
+							/>
+							<label for="female">Category</label>
+						</span>
+						<span>
+							<input
+								onChange={(e) => this.handleRadioChange(e)}
+								type="radio"
+								id="city"
+								name="search"
+								value="city"
+							/>
+							<label for="other">City</label>
+						</span>
+						<span>
+							<input
+								onChange={(e) => this.handleRadioChange(e)}
+								type="radio"
+								id="state"
+								name="search"
+								value="state"
+							/>
+							<label for="other">State</label>
+						</span>
+					</div>
+
 					<input
 						id="searchBar"
 						onChange={this.handleInput}
 						class="searchbar"
 						type="text"
+						autocomplete="off"
 						placeholder="Search..."
 					/>
 				</div>

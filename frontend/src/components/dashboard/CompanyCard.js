@@ -160,7 +160,12 @@ class CompanyCard extends Component {
 								<div className="company-card-buttons">
 									<section class="form_controls action">
 										<input type="submit" value="Save" class="btn btn-main" />
-										<button class="btn btn-default">Cancel</button>
+										<button
+											class="btn btn-default"
+											onClick={() => this.props.history.push('/dashboard')}
+										>
+											Cancel
+										</button>
 									</section>
 								</div>
 							</div>

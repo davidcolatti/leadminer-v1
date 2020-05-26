@@ -2,17 +2,19 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import actions from '../../services';
 import Loading from '../loading/Loading';
+// import CompanyCard from '../dashboard/CompanyCard';
 
 class Dashboard extends Component {
 	state = {
-		index: 0
+		index: 0,
+		cardToggle: false
 	};
 
-	nextLead = () => {
-		this.setState({
-			index: this.state.index + 1
-		});
-	};
+	// nextLead = () => {
+	// 	this.setState({
+	// 		index: this.state.index + 1
+	// 	});
+	// };
 
 	deleteFromContactedLeads = (index) => {
 		let contactedLeads = this.props.user.contactedLeads;
@@ -24,7 +26,7 @@ class Dashboard extends Component {
 			.catch((err) => console.log(err));
 
 		this.props.setUser({
-			...this.props.user
+			...this.props.user1
 		});
 	};
 
@@ -62,8 +64,8 @@ class Dashboard extends Component {
 	displayTable = () => {
 		return (
 			<div>
-				<div class="tbl-header">
-					<table cellpadding="0" cellspacing="0" border="0">
+				<div className="tbl-header">
+					<table cellPadding="0" cellSpacing="0" border="0">
 						<thead>
 							<tr>
 								<th>Company</th>
@@ -77,8 +79,8 @@ class Dashboard extends Component {
 						</thead>
 					</table>
 				</div>
-				<div class="tbl-content">
-					<table cellpadding="0" cellspacing="0" border="0">
+				<div className="tbl-content">
+					<table cellPadding="0" cellSpacing="0" border="0">
 						<tbody>{this.props.user.masterLeads ? this.displayLead() : <Loading />}</tbody>
 					</table>
 				</div>

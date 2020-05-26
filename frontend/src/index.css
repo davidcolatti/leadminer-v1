@@ -621,12 +621,14 @@ body {
 .searchbar {
 	float: right;
 	background-color: #d0323700;
+	text-shadow: 1px 1px black;
 	color: white;
 	padding: 6px 10px;
 	width: 150px;
 	border: none;
 	margin-top: 1px;
 	margin-right: 8px;
+	margin-left: 5rem;
 	font-size: 1em;
 	border-bottom: white solid 2px;
 	transition: 0.3s;
@@ -639,7 +641,7 @@ body {
 }
 
 .searchbar:focus {
-	width: 100vw;
+	width: 40vw;
 	font-size: 1em;
 	font-weight: bold;
 	transition: 0.3s;
@@ -647,14 +649,23 @@ body {
 	outline: none;
 }
 
+.container-radio {
+	font-size: 1em;
+	font-weight: bold;
+	width: 45%;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.container-radio label {
+	margin-left: .5rem;
+}
+
 /* COMPANY CARD */
 
 .CompanyCard {
-	width: 100vw;
-	height: 100vh;
-	color: white;
-	text-shadow: 1px 1px black;
-	background-image: url('https://i.stack.imgur.com/28iBm.png');
+	display: flex;
+	justify-content: center;
 }
 
 .company-card-form {

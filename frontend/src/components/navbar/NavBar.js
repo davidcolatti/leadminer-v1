@@ -46,6 +46,7 @@ class NavBar extends Component {
 						name="email"
 						placeholder="email"
 						type="email"
+						autocomplete="off"
 						onChange={this.handleChange}
 					/>
 					<input
@@ -53,6 +54,7 @@ class NavBar extends Component {
 						name="password"
 						placeholder="password"
 						type="password"
+						autocomplete="off"
 						onChange={this.handleChange}
 					/>
 					<input type="submit" value="Log In" />
@@ -90,6 +92,7 @@ class NavBar extends Component {
 						name="email"
 						type="email"
 						placeholder="email"
+						autocomplete="off"
 						onChange={this.handleChange}
 					/>
 					<input
@@ -97,6 +100,7 @@ class NavBar extends Component {
 						name="password"
 						placeholder="password"
 						type="password"
+						autocomplete="off"
 						onChange={this.handleChange}
 					/>
 					<input type="submit" value="Sign Up" />
@@ -106,43 +110,45 @@ class NavBar extends Component {
 	};
 
 	displayJoinNow = () => {
-		return (
-			<span className="nav-links">
-				<span className="dropdown">
-					<Link to="/">
-						Join Now !<i class="arrow down" />
-					</Link>
-					<span className="dropdown-content-join">
-						<ul>
-							<li>
-								<Link
-									to="/"
-									onClick={() =>
-										this.setState({
-											loginToggle: !this.state.loginToggle,
-											signUpToggle: true
-										})}
-								>
-									Login
-								</Link>
-							</li>
-							<li>
-								<Link
-									to="/"
-									onClick={() =>
-										this.setState({
-											signUpToggle: false,
-											loginToggle: true
-										})}
-								>
-									Sign Up
-								</Link>
-							</li>
-						</ul>
+		if (this.state.signUpToggle && this.state.loginToggle) {
+			return (
+				<span className="nav-links">
+					<span className="dropdown">
+						<Link to="/">
+							Join Now !<i className="arrow down" />
+						</Link>
+						<span className="dropdown-content-join">
+							<ul>
+								<li>
+									<Link
+										to="/"
+										onClick={() =>
+											this.setState({
+												loginToggle: !this.state.loginToggle,
+												signUpToggle: true
+											})}
+									>
+										Login
+									</Link>
+								</li>
+								<li>
+									<Link
+										to="/"
+										onClick={() =>
+											this.setState({
+												signUpToggle: false,
+												loginToggle: true
+											})}
+									>
+										Sign Up
+									</Link>
+								</li>
+							</ul>
+						</span>
 					</span>
 				</span>
-			</span>
-		);
+			);
+		}
 	};
 
 	logOut = async () => {
@@ -164,17 +170,19 @@ class NavBar extends Component {
 				{this.props.email ? (
 					<nav className="NavBar">
 						<span className="nav-emblem">
-							<img
-								className="emblem-img"
-								src="https://cdn0.iconfinder.com/data/icons/mining-glyph/100/mining-29-512.png"
-								alt="emblem"
-							/>
+							<a href="/dashboard">
+								<img
+									className="emblem-img"
+									src="https://cdn0.iconfinder.com/data/icons/mining-glyph/100/mining-29-512.png"
+									alt="emblem"
+								/>
+							</a>
 						</span>
 						<span className="nav-links">
 							<Link to="/dashboard">Dashboard</Link>
 							<span className="dropdown">
 								<Link to="/prospecting">
-									Prospecting<i class="arrow down" />
+									Prospecting<i className="arrow down" />
 								</Link>
 								<span className="dropdown-content">
 									<ul>
@@ -195,11 +203,13 @@ class NavBar extends Component {
 				) : (
 					<nav className="NavBar">
 						<span className="nav-emblem">
-							<img
-								className="emblem-img"
-								src="https://cdn0.iconfinder.com/data/icons/mining-glyph/100/mining-29-512.png"
-								alt="emblem"
-							/>
+							<a href="/">
+								<img
+									className="emblem-img"
+									src="https://cdn0.iconfinder.com/data/icons/mining-glyph/100/mining-29-512.png"
+									alt="emblem"
+								/>
+							</a>
 						</span>
 
 						{this.state.loginToggle ? '' : this.displayLoginForm()}

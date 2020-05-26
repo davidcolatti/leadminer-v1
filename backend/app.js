@@ -22,12 +22,12 @@ mongoose
 	.catch((err) => console.error('Error connecting to mongo', err));
 
 // scrapers
-// let angiesId = 25085540;
+// let angiesId = 25086500;
 // setInterval(function() {
 // 	console.log(angiesId);
 // 	main(angiesId, 10);
 // 	angiesId += 20;
-// }, 9000);
+// }, 7000);
 
 // 12 * 60 * 60 * 1000
 

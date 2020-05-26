@@ -7,7 +7,7 @@ class CompanyCard extends Component {
 	};
 
 	componentDidMount() {
-		if (this.props.user) {
+		if (this.props.user.contactedLeads) {
 			let lead = this.props.user.contactedLeads.find((lead) => lead._id === this.props.match.params.id);
 			this.setState({
 				selectedLead: lead
@@ -131,7 +131,7 @@ class CompanyCard extends Component {
 										<li className="company-card-li">
 											<label for="">Disposition</label>
 											<section class="form_controls">
-												<select class="form_element">
+												<select class="form_element-select">
 													<option>Prospect</option>
 													<option>Contacted</option>
 													<option>Appt Set</option>
@@ -151,7 +151,7 @@ class CompanyCard extends Component {
 											value={this.state.selectedLead.notes}
 											name=""
 											id="notes"
-											cols="80"
+											cols="87"
 											rows="10"
 											class="form_element"
 										/>

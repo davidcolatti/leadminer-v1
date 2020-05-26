@@ -556,16 +556,16 @@ body {
 }
 
 .company-card-form {
-	width: 70%;
+	width: 600px;
 }
 
 .li-container {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
 }
 
 fieldset {
+	width: 110%;
 	background-color: rgba(0, 0, 0, 0.445);
 }
 
@@ -591,7 +591,7 @@ fieldset {
 }
 
 .company-card-li input:focus {
-	width: 90%;
+	width: 80%;
 	font-weight: bold;
 	transition: 0.3s;
 	border-bottom: white solid 2px;
@@ -603,10 +603,58 @@ fieldset {
 }
 
 .company-card-notes {
-	margin-left: 15%;
+	margin-left: 3rem;
 	margin-top: 1rem;
+	display: flex;
+	flex-direction: column;
 }
 
 .company-card-notes textarea {
 	margin-top: 1rem;
+}
+
+.company-card-notes textarea:focus {
+	outline: 0;
+}
+
+.form_element-select {
+	margin-top: 1rem;
+	height: 30px;
+	width: 200px;
+	background-color: rgba(0, 0, 0, 0);
+	border: 2px solid white;
+	color: white;
+	text-shadow: 1px 1px black;
+}
+
+.form_element-select:focus {
+	outline: 0;
+}
+
+.sec-li-div {
+	margin-left: 4rem;
+}
+
+.action {
+	display: flex;
+	justify-content: center;
+	margin-top: 3rem;
+	height: 60px;
+}
+
+.btn {
+	margin-right: 2rem;
+	font-size: 20px;
+	width: 10rem;
+	height: 3rem;
+	background-color: rgba(0, 0, 0, 0);
+	border-radius: 20px;
+	border: 2px solid white;
+	color: white;
+}
+
+.btn:hover {
+	transition: 0.25s;
+	background-color: rgba(0, 0, 0, 0.466);
+	cursor: pointer;
 }

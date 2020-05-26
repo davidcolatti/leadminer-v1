@@ -33,7 +33,11 @@ class SearchTool extends Component {
 	};
 
 	displayLead = () => {
-		let masterLeads = this.props.user.masterLeads.filter((leadObj) => {
+		let masterLeads = [ ...this.props.user.masterLeads ].filter((leadObj) => {
+			if (!leadObj.category[0]) {
+				console.log(leadObj);
+			}
+
 			if (leadObj.businessName.toLowerCase().includes(this.state.searchTerm)) {
 				return true;
 			} else if (leadObj.category[0].toLowerCase().includes(this.state.searchTerm)) {

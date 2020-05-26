@@ -46,12 +46,12 @@ async function scrapePages(pages) {
 		let category = res.data.categories.map((each) => each.name);
 
 		let data = {
-			businessName: res.data.name,
-			phoneNumber: res.data.primaryContactInfo.primaryPhoneNumber.original,
-			city: res.data.primaryAddress.city.name,
-			state: res.data.primaryAddress.region.abbreviation,
-			email: res.data.primaryContactInfo.email,
-			category: category,
+			businessName: res.data.name || 'N/A',
+			phoneNumber: res.data.primaryContactInfo.primaryPhoneNumber.original || 'N/A',
+			city: res.data.primaryAddress.city.name || 'N/A',
+			state: res.data.primaryAddress.region.abbreviation || 'N/A',
+			email: res.data.primaryContactInfo.email || 'N/A',
+			category: category || 'N/A',
 			disposition: 'Prospect'
 		};
 

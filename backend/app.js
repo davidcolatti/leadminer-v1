@@ -9,7 +9,7 @@ const path = require('path');
 const cors = require('cors');
 const session = require('express-session');
 const passport = require('./config/passport');
-const main = require('./scrapers/angies');
+// const main = require('./scrapers/angies');
 const searchYelp = require('./scrapers/yelp');
 
 // MongoDB connection to atlas or compass

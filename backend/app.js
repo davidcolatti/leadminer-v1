@@ -22,17 +22,17 @@ mongoose
 	.catch((err) => console.error('Error connecting to mongo', err));
 
 // scrapers
-let angiesId = 25090500;
-setInterval(function() {
-	console.log(angiesId);
-	main(angiesId, 10);
-	angiesId += 20;
-}, 7000);
+// let angiesId = 25084440;
+// setInterval(function() {
+// 	console.log(angiesId);
+// 	main(angiesId, 10);
+// 	angiesId += 20;
+// }, 7000);
 
 // 12 * 60 * 60 * 1000
 
 // yelp will take a searched input of query in SearchTools component
-// searchYelp('agency', 'miami');
+// searchYelp('lawyer', 'miami');
 
 ///////////////
 

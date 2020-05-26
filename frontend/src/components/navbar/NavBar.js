@@ -105,6 +105,46 @@ class NavBar extends Component {
 		);
 	};
 
+	displayJoinNow = () => {
+		return (
+			<span className="nav-links">
+				<span className="dropdown">
+					<Link to="/">
+						Join Now !<i class="arrow down" />
+					</Link>
+					<span className="dropdown-content-join">
+						<ul>
+							<li>
+								<Link
+									to="/"
+									onClick={() =>
+										this.setState({
+											loginToggle: !this.state.loginToggle,
+											signUpToggle: true
+										})}
+								>
+									Login
+								</Link>
+							</li>
+							<li>
+								<Link
+									to="/"
+									onClick={() =>
+										this.setState({
+											signUpToggle: false,
+											loginToggle: true
+										})}
+								>
+									Sign Up
+								</Link>
+							</li>
+						</ul>
+					</span>
+				</span>
+			</span>
+		);
+	};
+
 	logOut = async () => {
 		let res = await actions.logOut();
 		console.log('logout was called', res);
@@ -162,23 +202,11 @@ class NavBar extends Component {
 							/>
 						</span>
 
-						<span className="nav-links">
-							{this.state.loginToggle ? (
-								<Link onClick={() => this.setState({ loginToggle: !this.state.loginToggle })} to="/">
-									Login
-								</Link>
-							) : (
-								this.displayLoginForm()
-							)}
+						{this.state.loginToggle ? '' : this.displayLoginForm()}
 
-							{this.state.signUpToggle ? (
-								<Link onClick={() => this.setState({ signUpToggle: !this.state.signUpToggle })} to="/">
-									Sign Up
-								</Link>
-							) : (
-								this.displaySignUpForm()
-							)}
-						</span>
+						{this.state.signUpToggle ? '' : this.displaySignUpForm()}
+
+						{this.displayJoinNow()}
 					</nav>
 				)}
 			</div>

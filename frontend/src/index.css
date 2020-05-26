@@ -12,6 +12,7 @@ body {
 	background-image: url('https://i.stack.imgur.com/28iBm.png');
 	color: white;
 	text-shadow: 1px 1px black;
+	overflow-x: hidden;
 }
 
 /* NAV BAR */
@@ -54,6 +55,7 @@ body {
 	background-color: rgba(0, 0, 0, 0);
 	border: 0;
 	border-bottom: 2px solid white;
+	color: white;
 }
 
 .nav-form input[type=email]:focus {
@@ -67,6 +69,7 @@ body {
 	background-color: rgba(0, 0, 0, 0);
 	border: 0;
 	border-bottom: 2px solid white;
+	color: white;
 }
 
 .nav-form input[type=password]:focus {
@@ -140,6 +143,36 @@ body {
 	-webkit-transform: rotate(45deg);
 }
 
+/* JOIN NOW DROPDOWN */
+.dropdown-content-join {
+	display: none;
+	position: absolute;
+	background-color: #000000a6;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	padding: 0;
+	z-index: 1;
+}
+
+.dropdown-content-join ul {
+	width: 10rem;
+	padding-left: 10px;
+	list-style-type: none;
+}
+
+.dropdown-content-join li {
+	margin-bottom: 1rem;
+}
+
+.dropdown-content-join a {
+	color: rgb(255, 255, 255);
+	text-align: center;
+	font-size: 15px;
+}
+
+.dropdown:hover .dropdown-content-join {
+	display: block;
+}
+
 /* Landing Page */
 
 .LandingPage {
@@ -164,6 +197,9 @@ body {
 .landing-quote i {
 	margin-top: 1rem;
 	font-size: 20px;
+	font-weight: lighter;
+	color: black;
+	text-shadow: 1px 1px rgba(255, 255, 255, 0.473);
 }
 
 .landing-photo {
@@ -190,7 +226,7 @@ body {
 
 .features {
 	border-top: 0.5px solid rgb(255, 255, 255);
-	height: 30%;
+	height: 100%;
 	display: flex;
 	flex-direction: row;
 	font-size: 15px;
@@ -203,12 +239,13 @@ body {
 
 .landing-feature {
 	width: 100%;
+	height: 100%;
 	border-left: 0.5px solid rgb(255, 255, 255);
 	padding-left: 1rem;
 	margin-right: 50px;
 }
 
-@media only screen and (max-width: 700px) {
+/* @media only screen and (max-width: 700px) {
 	.landing-logo {
 		height: 50%;
 		font-size: 50px;
@@ -233,7 +270,7 @@ body {
 		padding-right: 1rem;
 		margin-right: 50px;
 	}
-}
+} */
 
 /* DASHBOARD */
 

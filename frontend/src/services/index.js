@@ -32,6 +32,9 @@ const actions = {
 	},
 	deleteLeadFromContactedLeadsArray: async (leads) => {
 		return await service.post('/delete-lead', leads);
+	},
+	saveLeads: async (leads) => {
+		return await service.post('/save-leads', leads);
 	}
 };
 

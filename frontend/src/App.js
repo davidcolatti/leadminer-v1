@@ -28,8 +28,6 @@ class App extends Component {
 	}
 
 	setUser = (user) => {
-		// console.log(user);
-
 		this.setState({
 			...user
 		});
@@ -60,7 +58,7 @@ class App extends Component {
 						<Route
 							exact
 							path="/dashboard/:id"
-							render={(props) => <CompanyCard {...props} user={this.state} />}
+							render={(props) => <CompanyCard {...props} user={this.state} setUser={this.setUser} />}
 						/>
 						<Route component={NotFound} />
 					</Switch>

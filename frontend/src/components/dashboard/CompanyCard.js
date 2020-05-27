@@ -1,24 +1,55 @@
 import React, { Component } from 'react';
 import Loading from '../loading/Loading';
+import actions from '../../services';
 
 class CompanyCard extends Component {
-	state = {
-		selectedLead: ''
-	};
+	state = {};
 
 	componentDidMount() {
 		if (this.props.user.contactedLeads) {
 			let lead = this.props.user.contactedLeads.find((lead) => lead._id === this.props.match.params.id);
 			this.setState({
-				selectedLead: lead
+				...lead
 			});
 		}
 	}
 
+	saveLeadBtn = () => {
+		let lead = this.state;
+
+		let matchedLead = this.props.user.contactedLeads.find((leadObj) => {
+			return leadObj._id === lead._id;
+		});
+
+		let savedContactedLeads = this.props.user.contactedLeads.map((oneLead) => {
+			if (oneLead._id === matchedLead._id) {
+				return (oneLead = lead);
+			} else {
+				return oneLead;
+			}
+		});
+
+		console.log(savedContactedLeads);
+
+		actions.saveLeads(savedContactedLeads).then((res) => console.log(res));
+
+		this.props.setUser({
+			contactedLeads: savedContactedLeads
+		});
+
+		this.props.history.push('/dashboard');
+	};
+
+	handleChange = (e) => {
+		this.setState({
+			[e.target.id]: e.target.value
+		});
+	};
+
 	render() {
 		return (
 			<div className="CompanyCard">
-				{this.state.selectedLead ? (
+				{this.state ? (
 					<form className="company-card-form">
 						<fieldset>
 							<legend>Company Card</legend>
@@ -29,9 +60,10 @@ class CompanyCard extends Component {
 											<label for="companyname">Company</label>
 											<section class="form__controls">
 												<input
-													value={this.state.selectedLead.businessName}
+													onChange={(e) => this.handleChange(e)}
+													value={this.state.businessName}
 													type="text"
-													id="companyname"
+													id="businessName"
 													class="form__element"
 												/>
 											</section>
@@ -40,9 +72,10 @@ class CompanyCard extends Component {
 											<label for="firstname">First Name</label>
 											<section class="form__controls">
 												<input
-													value={this.state.selectedLead.firstName}
+													onChange={(e) => this.handleChange(e)}
+													value={this.state.firstName}
 													type="text"
-													id="firstname"
+													id="firstName"
 													class="form__element"
 												/>
 											</section>
@@ -51,9 +84,10 @@ class CompanyCard extends Component {
 											<label for="lastname">Last Name</label>
 											<section class="form__controls">
 												<input
-													value={this.state.selectedLead.lastName}
+													onChange={(e) => this.handleChange(e)}
+													value={this.state.lastName}
 													type="text"
-													id="lastname"
+													id="lastName"
 													class="form__element"
 												/>
 											</section>
@@ -62,7 +96,8 @@ class CompanyCard extends Component {
 											<label for="email">Email</label>
 											<section class="form__controls">
 												<input
-													value={this.state.selectedLead.email}
+													onChange={(e) => this.handleChange(e)}
+													value={this.state.email}
 													type="email"
 													id="email"
 													class="form__element"
@@ -73,9 +108,10 @@ class CompanyCard extends Component {
 											<label for="phonenumber">Phone Number</label>
 											<section class="form__controls">
 												<input
-													value={this.state.selectedLead.phoneNumber}
+													onChange={(e) => this.handleChange(e)}
+													value={this.state.phoneNumber}
 													type="phone"
-													id="phonenumber"
+													id="phoneNumber"
 													class="form__element"
 												/>
 											</section>
@@ -88,9 +124,10 @@ class CompanyCard extends Component {
 											<label for="secondphone">Second Phone Number</label>
 											<section class="form__controls">
 												<input
-													value={this.state.selectedLead.secondPhoneNumber}
+													onChange={(e) => this.handleChange(e)}
+													value={this.state.secondPhoneNumber}
 													type="phone"
-													id="secondphone"
+													id="secondPhoneNumber"
 													class="form__element"
 												/>
 											</section>
@@ -99,9 +136,10 @@ class CompanyCard extends Component {
 											<label for="streetaddress">Street</label>
 											<section class="form__controls">
 												<input
-													value={this.state.selectedLead.streetAddress}
+													onChange={(e) => this.handleChange(e)}
+													value={this.state.streetAddress}
 													type="text"
-													id="streetaddress"
+													id="streetAddress"
 													class="form__element"
 												/>
 											</section>
@@ -110,7 +148,8 @@ class CompanyCard extends Component {
 											<label for="city">City</label>
 											<section class="form__controls">
 												<input
-													value={this.state.selectedLead.city}
+													onChange={(e) => this.handleChange(e)}
+													value={this.state.city}
 													type="text"
 													id="city"
 													class="form__element"
@@ -121,7 +160,8 @@ class CompanyCard extends Component {
 											<label for="state">State</label>
 											<section class="form__controls">
 												<input
-													value={this.state.selectedLead.state}
+													onChange={(e) => this.handleChange(e)}
+													value={this.state.state}
 													type="text"
 													id="state"
 													class="form__element"
@@ -131,7 +171,11 @@ class CompanyCard extends Component {
 										<li className="company-card-li">
 											<label for="">Disposition</label>
 											<section class="form_controls">
-												<select class="form_element-select">
+												<select
+													id="disposition"
+													class="form_element-select"
+													onChange={(e) => this.handleChange(e)}
+												>
 													<option>Prospect</option>
 													<option>Contacted</option>
 													<option>Appt Set</option>
@@ -148,7 +192,8 @@ class CompanyCard extends Component {
 									<label for="notes">Notes</label>
 									<section class="form_controls">
 										<textarea
-											value={this.state.selectedLead.notes}
+											onChange={(e) => this.handleChange(e)}
+											value={this.state.notes}
 											name=""
 											id="notes"
 											cols="60"
@@ -159,7 +204,12 @@ class CompanyCard extends Component {
 								</div>
 								<div className="company-card-buttons">
 									<section class="form_controls action">
-										<input type="submit" value="Save" class="btn btn-main" />
+										<input
+											type="button"
+											value="Save"
+											class="btn btn-main"
+											onClick={() => this.saveLeadBtn()}
+										/>
 										<button
 											class="btn btn-default"
 											onClick={() => this.props.history.push('/dashboard')}

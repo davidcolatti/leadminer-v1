@@ -17,11 +17,13 @@ class SearchTool extends Component {
 	};
 
 	handleRadioChange = (e) => {
-		console.log(e.target.value);
-
 		this.setState({
 			searchType: e.target.value
 		});
+	};
+
+	saveLeadBtn = () => {
+		// POST TO BACKEND
 	};
 
 	addLeadToDash = (lead) => {
@@ -42,22 +44,20 @@ class SearchTool extends Component {
 	};
 
 	displayLead = () => {
-		let masterLeads = [ ...this.props.user.masterLeads ].filter((leadObj) => {
-			if (leadObj.businessName.toLowerCase().includes(this.state.searchTerm)) {
-				return true;
-			} else if (leadObj.category[0].toLowerCase().includes(this.state.searchTerm)) {
-				return true;
-			} else if (leadObj.city.toLowerCase().includes(this.state.searchTerm)) {
-				return true;
-			} else if (leadObj.state.toLowerCase().includes(this.state.searchTerm)) {
-				return true;
-			} else {
-				return false;
-			}
-		});
+		let searchType = this.state.searchType;
 
 		if (this.state.searchTerm.length !== 0) {
-			return Array.from({ length: masterLeads.length }, (_, i) => {
+			let masterLeads = [ ...this.props.user.masterLeads ].filter((leadObj) => {
+				if (searchType === 'category') {
+					return leadObj[searchType].find((category) =>
+						category.toLowerCase().includes(this.state.searchTerm)
+					);
+				} else {
+					return leadObj[searchType].toLowerCase().includes(this.state.searchTerm);
+				}
+			});
+
+			return Array.from({ length: masterLeads.length || 0 }, (_, i) => {
 				return (
 					<Fragment>
 						<tr className="prospecting-company-row">

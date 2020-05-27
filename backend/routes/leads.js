@@ -10,6 +10,21 @@ router.get('/master-leads', (req, res, next) => {
 	});
 });
 
+router.post('/save-leads', isAuth, (req, res, next) => {
+	console.log('saving and modifying a lead');
+
+	User.findById(req.user._id).then((user) => {
+		console.log(user);
+
+		user.contactedLeads = req.body;
+		user.save((err, doc) => {
+			if (err) throw err;
+
+			res.json(doc);
+		});
+	});
+});
+
 router.post('/add-lead', isAuth, (req, res, next) => {
 	console.log(req.body, req.user);
 

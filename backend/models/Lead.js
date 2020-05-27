@@ -10,7 +10,7 @@ const leadSchema = new Schema({
 	lastName: String,
 	streetAddress: String,
 	secondPhoneNumber: String,
-	notes: Array,
+	notes: String,
 	category: Array,
 	email: String,
 	disposition: String

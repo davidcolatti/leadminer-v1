@@ -2,19 +2,13 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import actions from '../../services';
 import Loading from '../loading/Loading';
-// import CompanyCard from '../dashboard/CompanyCard';
+import Popup from 'reactjs-popup';
+import ModalCard from './ModalCard';
 
 class Dashboard extends Component {
 	state = {
-		index: 0,
-		cardToggle: false
+		index: 0
 	};
-
-	// nextLead = () => {
-	// 	this.setState({
-	// 		index: this.state.index + 1
-	// 	});
-	// };
 
 	deleteFromContactedLeads = (index) => {
 		let contactedLeads = this.props.user.contactedLeads;
@@ -46,7 +40,11 @@ class Dashboard extends Component {
 							</Link>
 						</td>
 						<td>{contactedLeads[this.state.index + i].category[0]}</td>
-						<td>{contactedLeads[this.state.index + i].phoneNumber}</td>
+						<td>
+							<a className="dash-tel" href={`tel:${contactedLeads[this.state.index + i].phoneNumber}`}>
+								{contactedLeads[this.state.index + i].phoneNumber}
+							</a>
+						</td>
 						<td>{contactedLeads[this.state.index + i].city}</td>
 						<td>{contactedLeads[this.state.index + i].state}</td>
 						<td>{contactedLeads[this.state.index + i].disposition}</td>
@@ -94,6 +92,9 @@ class Dashboard extends Component {
 	render() {
 		return (
 			<div className="Dashboard">
+				<Popup modal trigger={<button>Click Me</button>}>
+					{(close) => <ModalCard close={close} />}
+				</Popup>
 				<div className="dashboard-content">{this.displayTable()}</div>
 			</div>
 		);

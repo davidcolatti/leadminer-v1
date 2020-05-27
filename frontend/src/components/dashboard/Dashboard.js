@@ -38,7 +38,10 @@ class Dashboard extends Component {
 				<Fragment>
 					<tr className="dash-company-row">
 						<td>
-							<Link to={`/dashboard/${contactedLeads[this.state.index + i]._id}`}>
+							<Link
+								className="dash-company-name"
+								to={`/dashboard/${contactedLeads[this.state.index + i]._id}`}
+							>
 								{contactedLeads[this.state.index + i].businessName}
 							</Link>
 						</td>

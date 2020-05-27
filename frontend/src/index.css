@@ -379,7 +379,11 @@ body {
 
 .dash-company-row:hover {
 	background-color: rgba(255, 255, 255, 0.3);
-	/* cursor: pointer; */
+}
+
+.dash-company-name:hover {
+	color: #103642;
+	transition: 0.25s;
 }
 
 /* for custom scrollbar for webkit browser*/
@@ -623,7 +627,7 @@ body {
 	text-shadow: 1px 1px black;
 	color: white;
 	padding: 6px 10px;
-	width: 150px;
+	width: 20vw;
 	border: none;
 	margin-top: 1px;
 	margin-right: 8px;
@@ -663,11 +667,13 @@ body {
 /* COMPANY CARD */
 
 .CompanyCard {
-	display: flex;
-	justify-content: center;
+	/* display: flex;
+	justify-content: center; */
 }
 
 .company-card-form {
+	display: flex;
+	justify-content: center;
 	width: 100%;
 }
 
@@ -687,7 +693,7 @@ fieldset {
 .company-card-ul {
 	width: 100%;
 	list-style-type: none;
-	padding-right: 2rem;
+	padding-right: 1.1rem;
 }
 
 .company-card-li {
@@ -699,14 +705,14 @@ fieldset {
 	border: none;
 	border-bottom: white solid 2px;
 	font-size: 90%;
-	width: 70%;
+	width: 75%;
 	color: white;
 	text-shadow: 1px 1px black;
 	background-color: rgba(0, 0, 0, 0);
 }
 
 .company-card-li input:focus {
-	width: 80%;
+	width: 85%;
 	font-weight: bold;
 	transition: 0.3s;
 	border-bottom: white solid 2px;
@@ -748,7 +754,7 @@ fieldset {
 }
 
 .first-li-div {
-	padding-right: 2.7rem;
+	margin-right: 2.7rem;
 }
 
 .sec-li-div {

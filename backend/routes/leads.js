@@ -25,6 +25,17 @@ router.post('/save-leads', isAuth, (req, res, next) => {
 	});
 });
 
+router.post('/searched-leads', (req, res, next) => {
+	console.log('back end search leads');
+	console.log(req.body);
+
+	Lead.find({ [req.body.searchType]: { $regex: req.body.term, $options: 'i' } })
+		.limit(0) // pagination
+		.skip(0) // give index to the user
+		.then((leads) => res.json({ leads }))
+		.catch((err) => console.log(err));
+});
+
 router.post('/add-lead', isAuth, (req, res, next) => {
 	console.log(req.body, req.user);
 

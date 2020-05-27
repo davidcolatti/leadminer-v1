@@ -35,6 +35,9 @@ const actions = {
 	},
 	saveLeads: async (leads) => {
 		return await service.post('/save-leads', leads);
+	},
+	searchedLeads: async (state) => {
+		return await service.post('/searched-leads', state);
 	}
 };
 

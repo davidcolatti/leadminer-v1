@@ -7,23 +7,61 @@ class SearchTool extends Component {
 	state = {
 		index: 0,
 		searchTerm: '',
-		searchType: 'businessName'
+		searchType: 'businessName',
+		timeout: null,
+		foundLeads: [],
+		results: true,
+		term: ''
 	};
 
-	handleInput = (e) => {
-		this.setState({
-			searchTerm: e.target.value.toLowerCase()
-		});
+	// handleInput = (e) => {
+	// 	this.setState({
+	// 		searchTerm: e.target.value.toLowerCase()
+	// 	});
+	// };
+
+	searchLeads = (e) => {
+		if (this.state.term.length !== 0) {
+			clearTimeout(this.state.timeout);
+
+			let timeout = setTimeout(() => {
+				console.log('search for', this.state.term, this.state.searchType);
+
+				actions.searchedLeads(this.state).then((res) => {
+					console.log(res.data);
+
+					this.setState({
+						foundLeads: res.data.leads,
+						results: true
+					});
+				});
+			}, 1000);
+
+			this.setState({
+				timeout,
+				results: false
+			});
+		}
+	};
+
+	handleTyping = (e) => {
+		let term = e.target.value;
+
+		this.setState(
+			{
+				term: term
+			},
+			() => this.searchLeads()
+		);
 	};
 
 	handleRadioChange = (e) => {
-		this.setState({
-			searchType: e.target.value
-		});
-	};
-
-	saveLeadBtn = () => {
-		// POST TO BACKEND
+		this.setState(
+			{
+				searchType: e.target.value
+			},
+			() => this.searchLeads()
+		);
 	};
 
 	addLeadToDash = (lead) => {
@@ -80,6 +118,29 @@ class SearchTool extends Component {
 		}
 	};
 
+	displayFoundLeads = () => {
+		return this.state.foundLeads.map((leadObj) => {
+			return (
+				<Fragment>
+					<tr className="prospecting-company-row">
+						<td>{leadObj.businessName}</td>
+						<td>{leadObj.category[0]}</td>
+						<td>{leadObj.city}</td>
+						<td>{leadObj.state}</td>
+						<td>
+							<img
+								alt="white add"
+								className="addDashBtn"
+								src="https://www.iconsdb.com/icons/preview/white/plus-4-xxl.png"
+								onClick={() => this.addLeadToDash(leadObj)}
+							/>
+						</td>
+					</tr>
+				</Fragment>
+			);
+		});
+	};
+
 	displayTable = () => {
 		return (
 			<div>
@@ -98,7 +159,7 @@ class SearchTool extends Component {
 				</div>
 				<div class="tbl-content">
 					<table cellpadding="0" cellspacing="0" border="0">
-						<tbody>{this.props.user.masterLeads ? this.displayLead() : <Loading />}</tbody>
+						<tbody>{this.state.results ? this.displayFoundLeads() : <Loading />}</tbody>
 					</table>
 				</div>
 			</div>
@@ -155,7 +216,7 @@ class SearchTool extends Component {
 
 					<input
 						id="searchBar"
-						onChange={this.handleInput}
+						onChange={this.handleTyping}
 						class="searchbar"
 						type="text"
 						autocomplete="off"

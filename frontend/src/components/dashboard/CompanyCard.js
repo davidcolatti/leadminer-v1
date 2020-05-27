@@ -151,8 +151,8 @@ class CompanyCard extends Component {
 											value={this.state.selectedLead.notes}
 											name=""
 											id="notes"
-											cols="87"
-											rows="10"
+											cols="60"
+											rows="3"
 											class="form_element"
 										/>
 									</section>

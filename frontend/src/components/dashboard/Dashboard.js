@@ -26,7 +26,7 @@ class Dashboard extends Component {
 			.catch((err) => console.log(err));
 
 		this.props.setUser({
-			...this.props.user1
+			...this.props.user
 		});
 	};
 

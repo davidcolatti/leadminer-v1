@@ -6,7 +6,6 @@ import LandingPage from './components/landingpage/LandingPage.js';
 import Dashboard from './components/dashboard/Dashboard';
 import Prospecting from './components/prospecting/Prospecting';
 import SearchTool from './components/prospecting/SearchTool';
-import CompanyCard from './components/dashboard/CompanyCard';
 
 import history from './components/history/History';
 import actions from './services/index';
@@ -54,11 +53,6 @@ class App extends Component {
 							exact
 							path="/prospecting/search-tool"
 							render={(props) => <SearchTool {...props} user={this.state} />}
-						/>
-						<Route
-							exact
-							path="/dashboard/:id"
-							render={(props) => <CompanyCard {...props} user={this.state} setUser={this.setUser} />}
 						/>
 						<Route component={NotFound} />
 					</Switch>

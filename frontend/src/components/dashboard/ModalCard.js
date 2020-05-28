@@ -2,47 +2,48 @@ import React, { Component } from 'react';
 import Loading from '../loading/Loading';
 import actions from '../../services';
 
-class CompanyCard extends Component {
-	state = {};
+class ModalCard extends Component {
+	state = {
+		selectedLead: {}
+	};
 
 	componentDidMount() {
-		// if (this.props.user.contactedLeads) {
-		// 	let lead = this.props.user.contactedLeads.find((lead) => lead._id === this.props.match.params.id);
-		// 	this.setState({
-		// 		...lead
-		// 	});
-		// }
+		if (this.props.selectedLead) {
+			this.setState({
+				...this.props.selectedLead
+			});
+		}
 	}
 
 	saveLeadBtn = () => {
-		// let lead = this.state;
-		// let matchedLead = this.props.user.contactedLeads.find((leadObj) => {
-		// 	return leadObj._id === lead._id;
-		// });
-		// let savedContactedLeads = this.props.user.contactedLeads.map((oneLead) => {
-		// 	if (oneLead._id === matchedLead._id) {
-		// 		return (oneLead = lead);
-		// 	} else {
-		// 		return oneLead;
-		// 	}
-		// });
-		// console.log(savedContactedLeads);
-		// actions.saveLeads(savedContactedLeads).then((res) => console.log(res));
-		// this.props.setUser({
-		// 	contactedLeads: savedContactedLeads
-		// });
-		// this.props.history.push('/dashboard');
+		let lead = this.state;
+		let matchedLead = this.props.user.contactedLeads.find((leadObj) => {
+			return leadObj._id === lead._id;
+		});
+		let savedContactedLeads = this.props.user.contactedLeads.map((oneLead) => {
+			if (oneLead._id === matchedLead._id) {
+				return (oneLead = lead);
+			} else {
+				return oneLead;
+			}
+		});
+		console.log(savedContactedLeads);
+		actions.saveLeads(savedContactedLeads).then((res) => console.log(res));
+		this.props.setUser({
+			contactedLeads: savedContactedLeads
+		});
+		this.props.history.push('/dashboard');
 	};
 
 	handleChange = (e) => {
-		// this.setState({
-		// 	[e.target.id]: e.target.value
-		// });
+		this.setState({
+			[e.target.id]: e.target.value
+		});
 	};
 
 	render() {
 		return (
-			<div className="CompanyCard">
+			<div className="ModalCard">
 				{this.state ? (
 					<form className="company-card-form">
 						<fieldset>
@@ -204,12 +205,6 @@ class CompanyCard extends Component {
 											class="btn btn-main"
 											onClick={() => this.saveLeadBtn()}
 										/>
-										<button
-											class="btn btn-default"
-											onClick={() => this.props.history.push('/dashboard')}
-										>
-											Cancel
-										</button>
 									</section>
 								</div>
 							</div>
@@ -223,4 +218,4 @@ class CompanyCard extends Component {
 	}
 }
 
-export default CompanyCard;
+export default ModalCard;

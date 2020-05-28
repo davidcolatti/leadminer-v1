@@ -33,9 +33,10 @@ class Dashboard extends Component {
 					<tr className="dash-company-row">
 						<td>
 							<Link
+								onClick={() => this.setState({ selectedLead: contactedLeads[this.state.index + i] })}
 								className="dash-company-name"
-								to={`/dashboard/${contactedLeads[this.state.index + i]._id}`}
 							>
+								{/* to={`/dashboard/${contactedLeads[this.state.index + i]._id}`} */}
 								{contactedLeads[this.state.index + i].businessName}
 							</Link>
 						</td>
@@ -93,7 +94,15 @@ class Dashboard extends Component {
 		return (
 			<div className="Dashboard">
 				<Popup modal trigger={<button>Click Me</button>}>
-					{(close) => <ModalCard close={close} />}
+					{(close) => (
+						<ModalCard
+							history={this.props.history}
+							user={this.props.user}
+							close={close}
+							setUser={this.props.setUser}
+							selectedLead={this.state.selectedLead}
+						/>
+					)}
 				</Popup>
 				<div className="dashboard-content">{this.displayTable()}</div>
 			</div>

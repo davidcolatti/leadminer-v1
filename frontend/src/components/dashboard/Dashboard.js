@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import actions from '../../services';
 import Loading from '../loading/Loading';
 import Popup from 'reactjs-popup';
@@ -31,15 +30,7 @@ class Dashboard extends Component {
 			return (
 				<Fragment>
 					<tr className="dash-company-row">
-						<td>
-							<Link
-								onClick={() => this.setState({ selectedLead: contactedLeads[this.state.index + i] })}
-								className="dash-company-name"
-							>
-								{/* to={`/dashboard/${contactedLeads[this.state.index + i]._id}`} */}
-								{contactedLeads[this.state.index + i].businessName}
-							</Link>
-						</td>
+						<td>{contactedLeads[this.state.index + i].businessName}</td>
 						<td>{contactedLeads[this.state.index + i].category[0]}</td>
 						<td>
 							<a className="dash-tel" href={`tel:${contactedLeads[this.state.index + i].phoneNumber}`}>
@@ -49,6 +40,14 @@ class Dashboard extends Component {
 						<td>{contactedLeads[this.state.index + i].city}</td>
 						<td>{contactedLeads[this.state.index + i].state}</td>
 						<td>{contactedLeads[this.state.index + i].disposition}</td>
+						<td>
+							<img
+								alt="view card"
+								src="https://www.iconsdb.com/icons/preview/white/show-property-xxl.png"
+								className="viewBtn"
+								onClick={() => this.toggleTrigger(contactedLeads[this.state.index + i])}
+							/>
+						</td>
 						<td>
 							<img
 								alt="white delete"
@@ -76,6 +75,7 @@ class Dashboard extends Component {
 								<th>City</th>
 								<th>State</th>
 								<th>Disposition</th>
+								<th>Edit Lead</th>
 								<th>Delete</th>
 							</tr>
 						</thead>
@@ -90,10 +90,14 @@ class Dashboard extends Component {
 		);
 	};
 
+	toggleTrigger = (lead) => {
+		this.setState({ selectedLead: lead }, () => document.querySelector('.trigger').click());
+	};
+
 	render() {
 		return (
 			<div className="Dashboard">
-				<Popup modal trigger={<button>Click Me</button>}>
+				<Popup modal trigger={<span className="trigger" />}>
 					{(close) => (
 						<ModalCard
 							history={this.props.history}

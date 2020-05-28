@@ -29,10 +29,11 @@ class ModalCard extends Component {
 		});
 		console.log(savedContactedLeads);
 		actions.saveLeads(savedContactedLeads).then((res) => console.log(res));
+
 		this.props.setUser({
-			contactedLeads: savedContactedLeads
+			contactedLeads: savedContactedLeads,
+			modalTrigger: true
 		});
-		this.props.history.push('/dashboard');
 	};
 
 	handleChange = (e) => {

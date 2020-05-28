@@ -115,7 +115,7 @@ class NavBar extends Component {
 				<span className="nav-links">
 					<span className="dropdown">
 						<Link to="/">
-							Join Now !<i className="arrow down" />
+							Join Now <i className="arrow down" />
 						</Link>
 						<span className="dropdown-content-join">
 							<ul>
